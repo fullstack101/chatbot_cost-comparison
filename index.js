@@ -77,15 +77,15 @@ function sendText(sender, text) {
 }*/
 
 app.post('/webhook', function (req, res) {
-    var data = req.body;
+    let data = req.body;
 
     // Make sure this is a page subscription
     if (data.object === 'page') {
 
         // Iterate over each entry - there may be multiple if batched
         data.entry.forEach(function(entry) {
-            var pageID = entry.id;
-            var timeOfEvent = entry.time;
+            let pageID = entry.id;
+            let timeOfEvent = entry.time;
 
             // Iterate over each messaging event
             entry.messaging.forEach(function(event) {
@@ -107,24 +107,19 @@ app.post('/webhook', function (req, res) {
 });
 
 function receivedMessage(event) {
-    // Putting a stub for now, we'll expand it in the following steps
-    console.log("Message data: ", event.message);
-}
-
-function receivedMessage(event) {
-    var senderID = event.sender.id;
-    var recipientID = event.recipient.id;
-    var timeOfMessage = event.timestamp;
-    var message = event.message;
+    let senderID = event.sender.id;
+    let recipientID = event.recipient.id;
+    let timeOfMessage = event.timestamp;
+    let message = event.message;
 
     console.log("Received message for user %d and page %d at %d with message:",
         senderID, recipientID, timeOfMessage);
     console.log(JSON.stringify(message));
 
-    var messageId = message.mid;
+    let messageId = message.mid;
 
-    var messageText = message.text;
-    var messageAttachments = message.attachments;
+    let messageText = message.text;
+    let messageAttachments = message.attachments;
 
     if (messageText) {
 
@@ -143,12 +138,8 @@ function receivedMessage(event) {
     }
 }
 
-function sendGenericMessage(recipientId, messageText) {
-    // To be expanded in later sections
-}
-
 function sendTextMessage(recipientId, messageText) {
-    var messageData = {
+    let messageData = {
         recipient: {
             id: recipientId
         },
@@ -163,14 +154,14 @@ function sendTextMessage(recipientId, messageText) {
 function callSendAPI(messageData) {
     request({
         uri: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: PAGE_ACCESS_TOKEN },
+        qs: { access_token: token },
         method: 'POST',
         json: messageData
 
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var recipientId = body.recipient_id;
-            var messageId = body.message_id;
+            let recipientId = body.recipient_id;
+            let messageId = body.message_id;
 
             console.log("Successfully sent generic message with id %s to recipient %s",
                 messageId, recipientId);
@@ -183,6 +174,6 @@ function callSendAPI(messageData) {
 }
 
 
-app.listen(app.get('port'),function(res,req) {
+/**app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
-});
+});*/
