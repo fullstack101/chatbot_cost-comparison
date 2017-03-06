@@ -23,11 +23,22 @@ app.get('/', function(req,res) {
 
 //FACEBOOK
 
-app.get('/webhook/', function(res,req) {
+/**app.get('/webhook/', function(res,req) {
     if(req.query['hub.verify_token'] === "token987") {
         res.send(req.query['hub.challenge'])
     }
     res.send("Wrong token");
+});*/
+
+app.get('/webhook', function(req, res) {
+    if (req.query['hub.mode'] === 'subscribe' &&
+        req.query['hub.verify_token'] === "token987") {
+        console.log("Validating webhook");
+        res.status(200).send(req.query['hub.challenge']);
+    } else {
+        console.error("Failed validation. Make sure the validation tokens match.");
+        res.sendStatus(403);
+    }
 });
 
 app.listen(app.get('port'),function(res,req) {
