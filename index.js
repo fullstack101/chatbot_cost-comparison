@@ -175,6 +175,6 @@ function callSendAPI(messageData) {
 }
 */
 
-/**app.listen(app.get('port'),function(res,req) {
+app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
-});*/
+});
