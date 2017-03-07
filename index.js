@@ -38,12 +38,12 @@ app.get('/webhook', function(req, res) {
         console.log("Validating webhook");
         res.status(200).send(req.query['hub.challenge']);
     } else {
-        console.error("Failed validation. Make sure the validation tokens match.111");
+        console.error("Failed validation. Make sure the validation tokens match.");
         res.sendStatus(403);
     }
 });
 
-/**app.post('/webhook', function(res,req){
+app.post('/webhook', function(res,req){
    let messaging_events= req.body.entry[0].messaging;
    for (let i=0; i<messaging_events.length; i++){
        let event=messaging_events[i];
@@ -74,9 +74,9 @@ function sendText(sender, text) {
             console.log("response body error");
         }
     }
-}*/
+}
 
-
+/**
 app.post('/webhook', function (req, res) {
     let data = req.body;
 
@@ -173,7 +173,7 @@ function callSendAPI(messageData) {
         }
     });
 }
-
+*/
 
 app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
