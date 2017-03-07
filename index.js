@@ -76,6 +76,7 @@ function sendText(sender, text) {
     }
 }*/
 
+/**
 app.post('/webhook', function (req, res) {
     let data = req.body;
 
@@ -172,7 +173,7 @@ function callSendAPI(messageData) {
         }
     });
 }
-
+*/
 
 /**app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
