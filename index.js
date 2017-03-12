@@ -59,6 +59,7 @@ app.post('/webhook/', function(req, res) {
             {
                 sendText(sender,greeting);
                 frame = "greeting";
+                break;
             }
 
             if(frame=="greeting")
