@@ -51,7 +51,7 @@ app.post('/webhook/', function(req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text;
             //sendText(sender, "Text echo: " + text.substring(0, 100))
-            sendGenericMessage(sender);
+            sendText(sender,text);
         }
     }
     res.sendStatus(200)
