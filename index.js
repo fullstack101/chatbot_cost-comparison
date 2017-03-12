@@ -111,7 +111,8 @@ app.post('/webhook/', function(req, res) {
                     break;
             }
 
-            sendText(sender,"The texts is:" + text);
+            sendText(sender,"The texts is: " + text);
+            sendText(sender,"The frame is: " + frame);
         }
     }
     res.sendStatus(200)
