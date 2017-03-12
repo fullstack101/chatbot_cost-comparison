@@ -51,7 +51,7 @@ app.post('/webhook/', function(req, res) {
         let event = messaging_events[i];
         let sender = event.sender.id;
         let frame="";
-        //sendText(sender, "Frame: "+frame);
+        sendText(sender, "Frame: "+frame);
         if (event.message && event.message.text) {
             let text = event.message.text;
 
