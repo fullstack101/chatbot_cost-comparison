@@ -127,7 +127,7 @@ app.post('/webhook/', function(req, res) {
         }
     }
     //sendText(sender,"DFGHGJBKJLIOYUGHFTCGVJHThe frame is: " + frame);
-    res.sendStatus(100)
+    res.sendStatus(200)
 });
 
 
