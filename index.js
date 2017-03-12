@@ -118,6 +118,7 @@ app.post('/webhook/', function(req, res) {
             sendText(sender,"The frame is: " + frame);
         }
     }
+    sendText(sender,"DFGHGJBKJLIOYUGHFTCGVJHThe frame is: " + frame);
     res.sendStatus(200)
 });
 
