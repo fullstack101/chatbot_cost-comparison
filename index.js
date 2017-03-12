@@ -55,7 +55,7 @@ app.post('/webhook/', function(req, res) {
 
             //sendText(sender, "Text echo: " + text.substring(0, 100))
             let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgrad, Bulgaria?";
-            /*if(text=="hi")
+            if(text=="hi")
             {
                 sendText(sender,greeting);
                 frame = "greeting";
@@ -74,9 +74,9 @@ app.post('/webhook/', function(req, res) {
                     frame="askAdministration";
                 }
 
-            }*/
+            }
 
-            switch (frame){
+            /*switch (frame){
                 case "":
                     if(text=="hi")
                     {
@@ -109,7 +109,7 @@ app.post('/webhook/', function(req, res) {
                         frame="";
                     }
                     break;
-            }
+            }*/
 
             sendText(sender,"The texts is: " + text);
             sendText(sender,"The frame is: " + frame);
