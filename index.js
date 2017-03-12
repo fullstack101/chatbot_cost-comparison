@@ -71,7 +71,7 @@ app.post('/webhook/', function(req, res) {
 
             }
 
-            //sendText(sender,text);
+            sendText(sender,"The texts is:" + text);
         }
     }
     res.sendStatus(200)
@@ -117,11 +117,11 @@ function sendGenericMessage(recipientId) {
                         buttons: [{
                             type: "web_url",
                             url: "http://nodeci.azurewebsites.net/",
-                            title: "Check Prices through URL"
+                            title: "Check Prices online"
                         }, {
                             type: "postback",
-                            title: "Call Postback",
-                            payload: "Continue the bot chat",
+                            title: "Continue with bot chat",
+                            payload: "Payload for first bubble",
                         }],
                     }]
                 }
