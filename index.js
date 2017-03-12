@@ -50,7 +50,7 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
-        sendText(sender, "Frame: "+frame);
+        //sendText(sender, "Frame: "+frame);
         if (event.message && event.message.text) {
             let text = event.message.text;
 
