@@ -90,6 +90,7 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,greeting);
                         frame = "greeting";
+                        res.sendStatus(226);
                     }
                     break;
 
@@ -98,7 +99,8 @@ app.post('/webhook/', function(req, res) {
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"How would you prefer to check the prices?");
-                        sendGenericMessage(sender)
+                        sendGenericMessage(sender);
+                        res.sendStatus(226);
                     }
                     else
                     {
