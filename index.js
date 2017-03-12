@@ -61,14 +61,46 @@ app.post('/webhook/', function(req, res) {
                 frame = "greeting";
             }
 
-            if(frame=="greeting")
+            /*if(frame=="greeting")
             {
                 if(text.toLowerCase()=="yes")
                 {
                     sendText(sender,"How would you prefer to check the prices?");
                     sendGenericMessage(sender)
                 }
+                else
+                {
+                    sendText(sender,"Do you have a question to the administration?");
+                    frame="askAdministration";
+                }
 
+            }*/
+
+            switch (frame){
+                case "greeting":
+                    if(text.toLowerCase()=="yes")
+                    {
+                        sendText(sender,"How would you prefer to check the prices?");
+                        sendGenericMessage(sender)
+                    }
+                    else
+                    {
+                        sendText(sender,"Do you have a question to the administration?");
+                        frame="askAboutAdministration";
+                    }
+                    break;
+
+                case "askAdministration":
+                    if(text.toLowerCase()=="yes")
+                    {
+                        sendText(sender,"I will ask the administration");
+                    }
+                    else
+                    {
+                        sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.")
+                        frame="";
+                    }
+                    break;
             }
 
             sendText(sender,"The texts is:" + text);
@@ -110,8 +142,8 @@ function sendGenericMessage(recipientId) {
                 payload: {
                     template_type: "generic",
                     elements: [{
-                        title: "rift",
-                        subtitle: "Next-generation virtual reality",
+                        title: "Cost-comaprison",
+                        subtitle: "Check the prices in Blagoevgrad",
                         item_url: "http://nodeci.azurewebsites.net/",
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
@@ -120,7 +152,7 @@ function sendGenericMessage(recipientId) {
                             title: "Check Prices online"
                         }, {
                             type: "postback",
-                            title: "Continue with bot chat",
+                            title: "Chat with bot",
                             payload: "Payload for first bubble",
                         }],
                     }]
