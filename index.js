@@ -55,13 +55,13 @@ app.post('/webhook/', function(req, res) {
 
             //sendText(sender, "Text echo: " + text.substring(0, 100))
             let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgrad, Bulgaria?";
-            if(text=="hi")
+            /*if(text=="hi")
             {
                 sendText(sender,greeting);
                 frame = "greeting";
             }
 
-            /*if(frame=="greeting")
+            if(frame=="greeting")
             {
                 if(text.toLowerCase()=="yes")
                 {
@@ -77,6 +77,14 @@ app.post('/webhook/', function(req, res) {
             }*/
 
             switch (frame){
+                case "":
+                    if(text=="hi")
+                    {
+                        sendText(sender,greeting);
+                        frame = "greeting";
+                    }
+                    break;
+
                 case "greeting":
                     if(text.toLowerCase()=="yes")
                     {
@@ -86,7 +94,7 @@ app.post('/webhook/', function(req, res) {
                     else
                     {
                         sendText(sender,"Do you have a question to the administration?");
-                        frame="askAboutAdministration";
+                        frame="askAdministration";
                     }
                     break;
 
