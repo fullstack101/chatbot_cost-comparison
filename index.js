@@ -49,8 +49,11 @@ app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
     //let frame="";
     console.log("DOGE");
+    console.log("Events: "+messaging_events);
+    console.log("Length: "+messaging_events.length);
     for (let i = 0; i < messaging_events.length; i++) {
-
+        console.log("message: "+ event.message);
+        console.log("text: "+event.message.text);
         let event = messaging_events[i];
         let sender = event.sender.id;
         //sendText(sender, "Frame: "+frame);
@@ -59,7 +62,7 @@ app.post('/webhook/', function(req, res) {
             console.log("Frame: "+frame);
             //sendText(sender, "Frame: "+frame);
             //sendText(sender, "Text echo: " + text.substring(0, 100))
-            let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgrad, Bulgaria?";
+            let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
             /*if(text=="hi")
             {
                 sendText(sender,greeting);
@@ -90,7 +93,6 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,greeting);
                         frame = "greeting";
-                        res.sendStatus(226);
                     }
                     break;
 
@@ -100,7 +102,6 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,"How would you prefer to check the prices?");
                         sendGenericMessage(sender);
-                        res.sendStatus(226);
                     }
                     else
                     {
