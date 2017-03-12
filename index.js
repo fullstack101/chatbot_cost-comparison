@@ -63,7 +63,7 @@ app.post('/webhook/', function(req, res) {
 
             if(frame=="greeting" && text=="yes")
             {
-                sendtText(sender,"yahooooo");
+                sendText(sender,"yahooooo");
             }
 
             sendText(sender,text);
