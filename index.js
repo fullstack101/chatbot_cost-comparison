@@ -51,8 +51,12 @@ app.post('/webhook/', function(req, res) {
         if (event.message && event.message.text) {
             let text = event.message.text;
             //sendText(sender, "Text echo: " + text.substring(0, 100))
-            let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgra, Bulgaria?";
-            sendText(sender,greeting);
+            let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgrad, Bulgaria?";
+            if(text=="hi")
+            {
+                sendText(sender,greeting);
+            }
+
             sendText(sender,text);
         }
     }
