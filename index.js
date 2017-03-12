@@ -63,10 +63,10 @@ app.post('/webhook/', function(req, res) {
 
             if(frame=="greeting" && text=="yes")
             {
-                sendText(sender,"yahooooo");
+                sendGenericMessage(sender)
             }
 
-            sendText(sender,text);
+            //sendText(sender,text);
         }
     }
     res.sendStatus(200)
@@ -107,11 +107,11 @@ function sendGenericMessage(recipientId) {
                     elements: [{
                         title: "rift",
                         subtitle: "Next-generation virtual reality",
-                        item_url: "https://www.oculus.com/en-us/rift/",
-                        image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "web_url",
-                            url: "https://www.oculus.com/en-us/rift/",
+                            url: "http://nodeci.azurewebsites.net/",
                             title: "Open Web URL"
                         }, {
                             type: "postback",
