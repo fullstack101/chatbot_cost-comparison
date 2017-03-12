@@ -44,6 +44,7 @@ app.get('/webhook', function(req, res) {
 });
 
 let frame = "";
+let botID=638196106390731;
 
 app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
@@ -58,7 +59,7 @@ app.post('/webhook/', function(req, res) {
         //sendText(sender, "Frame: "+frame);
         console.log("message: "+ event.message);
         console.log("text: "+event.message.text);
-        if (event.message && event.message.text && sender!=638196106390731) {
+        if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
             console.log("Frame: "+frame);
             //sendText(sender, "Frame: "+frame);
