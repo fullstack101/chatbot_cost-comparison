@@ -43,11 +43,11 @@ app.get('/webhook', function(req, res) {
     }
 });
 
-//let frame = "";
+let frame = "";
 
 app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
-    let frame="";
+    //let frame="";
     console.log("DOGE");
     for (let i = 0; i < messaging_events.length; i++) {
 
@@ -127,7 +127,7 @@ app.post('/webhook/', function(req, res) {
         }
     }
     //sendText(sender,"DFGHGJBKJLIOYUGHFTCGVJHThe frame is: " + frame);
-    res.sendStatus(200)
+    res.sendStatus(205)
 });
 
 
