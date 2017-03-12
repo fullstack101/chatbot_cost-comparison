@@ -54,6 +54,7 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
+        console.log("Sender: "+sender);
         //sendText(sender, "Frame: "+frame);
         console.log("message: "+ event.message);
         console.log("text: "+event.message.text);
