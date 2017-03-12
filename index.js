@@ -58,7 +58,7 @@ app.post('/webhook/', function(req, res) {
         //sendText(sender, "Frame: "+frame);
         console.log("message: "+ event.message);
         console.log("text: "+event.message.text);
-        if (event.message && event.message.text) {
+        if (event.message && event.message.text && sender!=638196106390731) {
             let text = event.message.text;
             console.log("Frame: "+frame);
             //sendText(sender, "Frame: "+frame);
