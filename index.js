@@ -82,6 +82,7 @@ app.post('/webhook/', function(req, res) {
 
             switch (frame){
                 case "":
+                    sendText(sender,"Empty Frame:" + frame);
                     if(text=="hi")
                     {
                         sendText(sender,greeting);
