@@ -61,9 +61,14 @@ app.post('/webhook/', function(req, res) {
                 frame = "greeting";
             }
 
-            if(frame=="greeting" && text=="yes")
+            if(frame=="greeting")
             {
-                sendGenericMessage(sender)
+                if(text.localeCompare("yes"))
+                {
+                    sendText(sender,"How would you prefer to check the prices?");
+                    sendGenericMessage(sender)
+                }
+
             }
 
             //sendText(sender,text);
@@ -112,11 +117,11 @@ function sendGenericMessage(recipientId) {
                         buttons: [{
                             type: "web_url",
                             url: "http://nodeci.azurewebsites.net/",
-                            title: "Open Web URL"
+                            title: "Check Prices through URL"
                         }, {
                             type: "postback",
                             title: "Call Postback",
-                            payload: "Payload for first bubble",
+                            payload: "Continue the bot chat",
                         }],
                     }]
                 }
