@@ -55,7 +55,8 @@ app.post('/webhook/', function(req, res) {
         //sendText(sender, "Frame: "+frame);
         if (event.message && event.message.text) {
             let text = event.message.text;
-            sendText(sender, "Frame: "+frame);
+            console.log("Frame: "+frame);
+            //sendText(sender, "Frame: "+frame);
             //sendText(sender, "Text echo: " + text.substring(0, 100))
             let greeting = "Hi, do you want to see a cost comparisson between your city and Blagoevgrad, Bulgaria?";
             /*if(text=="hi")
@@ -82,7 +83,8 @@ app.post('/webhook/', function(req, res) {
 
             switch (frame){
                 case "":
-                    sendText(sender,"Empty Frame:" + frame);
+                    //sendText(sender,"Empty Frame:" + frame);
+                    console.log("Empty");
                     if(text=="hi")
                     {
                         sendText(sender,greeting);
@@ -91,6 +93,7 @@ app.post('/webhook/', function(req, res) {
                     break;
 
                 case "greeting":
+                    console.log("Greeting");
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"How would you prefer to check the prices?");
@@ -104,6 +107,7 @@ app.post('/webhook/', function(req, res) {
                     break;
 
                 case "askAdministration":
+                    console.log("ask");
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"I will ask the administration");
@@ -116,8 +120,9 @@ app.post('/webhook/', function(req, res) {
                     break;
             }
 
-            sendText(sender,"The texts is: " + text);
-            sendText(sender,"The frame is: " + frame);
+            console.log("The frame is: "+frame);
+            //sendText(sender,"The texts is: " + text);
+            //sendText(sender,"The frame is: " + frame);
         }
     }
     //sendText(sender,"DFGHGJBKJLIOYUGHFTCGVJHThe frame is: " + frame);
