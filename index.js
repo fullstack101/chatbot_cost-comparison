@@ -63,7 +63,7 @@ app.post('/webhook/', function(req, res) {
 
             if(frame=="greeting")
             {
-                if(text=="yes")
+                if(text.toLowerCase()=="yes")
                 {
                     sendText(sender,"How would you prefer to check the prices?");
                     sendGenericMessage(sender)
