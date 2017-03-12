@@ -52,11 +52,11 @@ app.post('/webhook/', function(req, res) {
     console.log("Events: "+messaging_events);
     console.log("Length: "+messaging_events.length);
     for (let i = 0; i < messaging_events.length; i++) {
-        console.log("message: "+ event.message);
-        console.log("text: "+event.message.text);
         let event = messaging_events[i];
         let sender = event.sender.id;
         //sendText(sender, "Frame: "+frame);
+        console.log("message: "+ event.message);
+        console.log("text: "+event.message.text);
         if (event.message && event.message.text) {
             let text = event.message.text;
             console.log("Frame: "+frame);
