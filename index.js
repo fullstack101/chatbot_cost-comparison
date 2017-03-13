@@ -191,7 +191,7 @@ function sendGenericMessagePriceType(recipientId){
                             type: "postback",
                             title: "Markets",
                             payload: "Payload for second button",
-                        }, {
+                        }/*, {
                             type: "postback",
                             title: "Transportation",
                             payload: "Payload for third button",
@@ -207,7 +207,7 @@ function sendGenericMessagePriceType(recipientId){
                             type: "postback",
                             title: "Clothing and Shoes",
                             payload: "Payload for sixth button",
-                        }],
+                        }*/],
                     }]
                 }
             }
