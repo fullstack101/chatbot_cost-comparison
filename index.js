@@ -104,6 +104,8 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,"How would you prefer to check the prices?");
                         sendGenericMessage(sender);
+                        sendText("Where are you from?");
+                        frame="city";
                     }
                     else
                     {
@@ -117,12 +119,21 @@ app.post('/webhook/', function(req, res) {
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"I will ask the administration");
+                        sendText("Bye");
+                        frame="";
                     }
                     else
                     {
                         sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.")
                         frame="";
                     }
+                    break;
+                case "city":
+                    console.log("city");
+                    sendText(sender, text+" is a nice city.");
+                    sendText(sender, "What comparison category do you want to see?");
+                    sendGenericMessagePriceType(sender);
+                    frame="";
                     break;
             }
 
@@ -155,6 +166,55 @@ function sendText(sender, text) {
             console.log("response body error");
         }
     }
+}
+
+function sendGenericMessagePriceType(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        //item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "Restaurants",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "Markets",
+                            payload: "Payload for second button",
+                        }, {
+                            type: "postback",
+                            title: "Transportation",
+                            payload: "Payload for third button",
+                        }, {
+                            type: "postback",
+                            title: "Utilities(Monthly)",
+                            payload: "Payload for fourth button",
+                        }, {
+                            type: "postback",
+                            title: "Sports and Leisure",
+                            payload: "Payload for fifth button",
+                        }, {
+                            type: "postback",
+                            title: "Clothing and Shoes",
+                            payload: "Payload for sixth button",
+                        }],
+                    }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
 }
 
 function sendGenericMessage(recipientId) {
