@@ -191,11 +191,11 @@ function sendGenericMessagePriceType(recipientId){
                             type: "postback",
                             title: "Markets",
                             payload: "Payload for second button",
-                        }/*, {
+                        }, {
                             type: "postback",
                             title: "Transportation",
                             payload: "Payload for third button",
-                        }, {
+                        }/*, {
                             type: "postback",
                             title: "Utilities(Monthly)",
                             payload: "Payload for fourth button",
