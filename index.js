@@ -195,11 +195,15 @@ function sendGenericMessagePriceType(recipientId){
                             type: "postback",
                             title: "Transportation",
                             payload: "Payload for third button",
-                        }, {
+                        }]
+                    },
+                        {
+                            title: "Categories",
+                            buttons: [{
                             type: "postback",
                             title: "Utilities(Monthly)",
                             payload: "Payload for fourth button",
-                        }/*, {
+                        }, {
                             type: "postback",
                             title: "Sports and Leisure",
                             payload: "Payload for fifth button",
@@ -207,7 +211,7 @@ function sendGenericMessagePriceType(recipientId){
                             type: "postback",
                             title: "Clothing and Shoes",
                             payload: "Payload for sixth button",
-                        }*/],
+                        }]
                     }]
                 }
             }
