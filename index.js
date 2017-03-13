@@ -104,7 +104,7 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,"How would you prefer to check the prices?");
                         sendGenericMessage(sender);
-                        sendText("Where are you from?");
+                        sendText(sender, "Where are you from?");
                         frame="city";
                     }
                     else
@@ -181,7 +181,7 @@ function sendGenericMessagePriceType(recipientId){
                     elements: [{
                         title: "Categories",
                         subtitle: "Choose a category",
-                        //item_url: "http://nodeci.azurewebsites.net/",
+                        item_url: "http://nodeci.azurewebsites.net/",
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
