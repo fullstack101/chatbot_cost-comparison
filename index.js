@@ -65,27 +65,6 @@ app.post('/webhook/', function(req, res) {
             //sendText(sender, "Frame: "+frame);
             //sendText(sender, "Text echo: " + text.substring(0, 100))
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
-            /*if(text=="hi")
-            {
-                sendText(sender,greeting);
-                frame = "greeting";
-                break;
-            }
-
-            if(frame=="greeting")
-            {
-                if(text.toLowerCase()=="yes")
-                {
-                    sendText(sender,"How would you prefer to check the prices?");
-                    sendGenericMessage(sender)
-                }
-                else
-                {
-                    sendText(sender,"Do you have a question to the administration?");
-                    frame="askAdministration";
-                }
-
-            }*/
 
             switch (frame){
                 case "":
@@ -119,7 +98,7 @@ app.post('/webhook/', function(req, res) {
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"I will ask the administration");
-                        sendText("Bye");
+                        sendText(sender, "Bye");
                         frame="";
                     }
                     else
@@ -142,7 +121,6 @@ app.post('/webhook/', function(req, res) {
             //sendText(sender,"The frame is: " + frame);
         }
     }
-    //sendText(sender,"DFGHGJBKJLIOYUGHFTCGVJHThe frame is: " + frame);
     res.sendStatus(200)
 });
 
@@ -199,6 +177,9 @@ function sendGenericMessagePriceType(recipientId){
                     },
                         {
                             title: "Categories",
+                            subtitle: "Choose a category",
+                            item_url: "http://nodeci.azurewebsites.net/",
+                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                             buttons: [{
                             type: "postback",
                             title: "Utilities(Monthly)",
