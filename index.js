@@ -88,7 +88,6 @@ function decision(sender,text){
 
     switch (frame){
         case "":
-            //sendText(sender,"Empty Frame:" + frame);
             console.log("Empty");
             if(text=="hi")
             {
