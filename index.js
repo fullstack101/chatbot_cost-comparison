@@ -85,6 +85,8 @@ function decision(sender,text){
     {
         frame="";
     }
+
+    sendText(sender, "The text is: "+text);
     switch (frame){
         case "":
             //sendText(sender,"Empty Frame:" + frame);

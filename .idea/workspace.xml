@@ -23,8 +23,8 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="768">
-              <caret line="75" column="3" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+            <state relative-caret-position="418">
+              <caret line="88" column="43" lean-forward="false" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
               <folding>
                 <element signature="n#!!block;n#sendText#0" expanded="false" />
                 <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
@@ -225,12 +225,12 @@
       <workItem from="1488824757517" duration="12384000" />
       <workItem from="1489334227109" duration="13201000" />
       <workItem from="1489394861944" duration="4298000" />
-      <workItem from="1489519082446" duration="10365000" />
+      <workItem from="1489519082446" duration="10538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40248000" />
+    <option name="totallyTimeSpent" value="40421000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="0" width="2164" height="1402" extended-state="0" />
@@ -356,8 +356,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="768">
-          <caret line="75" column="3" lean-forward="true" selection-start-line="75" selection-start-column="3" selection-end-line="75" selection-end-column="3" />
+        <state relative-caret-position="418">
+          <caret line="88" column="43" lean-forward="false" selection-start-line="88" selection-start-column="43" selection-end-line="88" selection-end-column="43" />
           <folding>
             <element signature="n#!!block;n#sendText#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
