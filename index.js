@@ -16,7 +16,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //ROUTES
-
 app.get('/', function(req,res) {
     res.send("Hi, I'm a chatbot");
 });
@@ -24,14 +23,6 @@ app.get('/', function(req,res) {
 let token = "EAAa4Wnh0ewUBAFupVsHWsX9tdkUVMBHVZAtJQEF1cLF4qZCguDShji7WvEh7XQZCO0L7itkGjOxpsiWFaD23k8NRDwHEHFjKYvHqJDi0zZAKjV98H3F6lz0MvbuovJn6d92FlfepoYksrRiwikQLRZCKZBiitOqHjtn7FUcZBF2xwZDZD";
 
 //FACEBOOK
-
-/**app.get('/webhook/', function(res,req) {
-    if(req.query['hub.verify_token'] === "token987") {
-        res.send(req.query['hub.challenge'])
-    }
-    res.send("Wrong token");
-});*/
-
 app.get('/webhook', function(req, res) {
     if (req.query['hub.mode'] === 'subscribe' &&
         req.query['hub.verify_token'] === "token987") {
@@ -55,15 +46,8 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
-        console.log("Sender: "+sender);
-        //sendText(sender, "Frame: "+frame);
-        console.log("message: "+ event.message);
-        console.log("text: "+event.message.text);
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
-            console.log("Frame: "+frame);
-            //sendText(sender, "Frame: "+frame);
-            //sendText(sender, "Text echo: " + text.substring(0, 100))
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
             switch (frame){
@@ -83,8 +67,7 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,"How would you prefer to check the prices?");
                         sendGenericMessage(sender);
-                        sendText(sender, "Where are you from?");
-                        frame="city";
+                        frame="answer";
                     }
                     else
                     {
@@ -98,12 +81,12 @@ app.post('/webhook/', function(req, res) {
                     if(text.toLowerCase()=="yes")
                     {
                         sendText(sender,"I will ask the administration");
-                        sendText(sender, "Bye");
+                        sendText(sender, "Thank you messaging us. Goodbye");
                         frame="";
                     }
                     else
                     {
-                        sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.")
+                        sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.");
                         frame="";
                     }
                     break;
@@ -112,13 +95,63 @@ app.post('/webhook/', function(req, res) {
                     sendText(sender, text+" is a nice city.");
                     sendText(sender, "What comparison category do you want to see?");
                     sendGenericMessagePriceType(sender);
-                    frame="";
+                    frame="choice1";
+                    break;
+                case "answer":
+                    if(text="chat with bot")
+                    {
+                        sendText(sender, "Where are you from?");
+                        frame="city";
+                    }
+                    else
+                    {
+                        sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
+                        frame="";
+                    }
+                    break;
+                case "choice1":
+                    if(text="Restaurants")
+                    {
+                        sendGenericMessageRestaurants(sender);
+                        frame="choice2";
+                    }
+                    else if(text == "Markets")
+                    {
+                        sendGenericMessageMarkets(sender);
+                        frame="choice2";
+                    }
+                    else if(text == "Transportation")
+                    {
+                        sendGenericMessageTransportation(sender);
+                        frame="choice2";
+                    }
+                    else if(text == "Utilities(Monthly)")
+                    {
+                        sendGenericMessageUtilities(sender);
+                        frame="choice2";
+                    }
+                    else if(text == "Sports and Leisure")
+                    {
+                        sendGenericMessageSports(sender);
+                        frame="choice2";
+                    }
+                    else if(text == "Clothing and Shoes")
+                    {
+                        sendGenericMessageClothing(sender);
+                        frame="choice2";
+                    }
+                    else if(text=="quit")
+                    {
+                        sendText(sender,"Thank you messaging us. Goodbye.");
+                        frame="";
+                    }
+                    else
+                    {
+                        sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
+                        sendGenericMessagePriceType(sender);
+                    }
                     break;
             }
-
-            console.log("The frame is: "+frame);
-            //sendText(sender,"The texts is: " + text);
-            //sendText(sender,"The frame is: " + frame);
         }
     }
     res.sendStatus(200)
@@ -222,11 +255,274 @@ function sendGenericMessage(recipientId) {
                             url: "http://nodeci.azurewebsites.net/",
                             title: "Check Prices online"
                         }, {
-                            type: "postback",
+                            type: "chat with bot",
                             title: "Chat with bot",
                             payload: "Payload for first bubble",
                         }],
                     }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageRestaurants(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "Meal, Inexpensive Restaurant",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "McMeal at McDonalds",
+                            payload: "Payload for second button",
+                        }, {
+                            type: "postback",
+                            title: "Domestic Beer (0.5 liter draught)",
+                            payload: "Payload for third button",
+                        }]
+                    },
+                        {
+                            title: "Categories",
+                            subtitle: "Choose a category",
+                            item_url: "http://nodeci.azurewebsites.net/",
+                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            buttons: [{
+                                type: "postback",
+                                title: "Cappuccino",
+                                payload: "Payload for fourth button",
+                            }, {
+                                type: "postback",
+                                title: "Coke/Pepsi (0.33 liter bottle)",
+                                payload: "Payload for fifth button",
+                            }, {
+                                type: "postback",
+                                title: "Water (0.33 liter bottle)",
+                                payload: "Payload for sixth button",
+                            }]
+                        }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageMarkets(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "Milk (regular), (1 liter)",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "Local Cheese (1kg)",
+                            payload: "Payload for second button",
+                        }, {
+                            type: "postback",
+                            title: "Apples (1kg)",
+                            payload: "Payload for third button",
+                        }]
+                    },
+                        {
+                            title: "Categories",
+                            subtitle: "Choose a category",
+                            item_url: "http://nodeci.azurewebsites.net/",
+                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            buttons: [{
+                                type: "postback",
+                                title: "Potato (1kg)",
+                                payload: "Payload for fourth button",
+                            }, {
+                                type: "postback",
+                                title: "Bottle of Wine (Mid-Range)",
+                                payload: "Payload for fifth button",
+                            }, {
+                                type: "postback",
+                                title: "Pack of Cigarettes (Marlboro)",
+                                payload: "Payload for sixth button",
+                            }]
+                        }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageTransportation(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "One-way Ticket (Local Transport)",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "Taxi Start (Normal Tariff)",
+                            payload: "Payload for second button",
+                        }, {
+                            type: "postback",
+                            title: "Gasoline (1 liter)",
+                            payload: "Payload for third button",
+                        }]
+                    }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageUtilities(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "1 min. of Prepaid Mobile Tariff Local (No Discounts or Plans)",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "Internet (10 Mbps, Unlimited Data, Cable/ADSL)",
+                            payload: "Payload for second button",
+                        }]
+                    }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageSports(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "Fitness Club, Monthly Fee for 1 Adult",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "Cinema, International Release, 1 Seat",
+                            payload: "Payload for second button",
+                        }]
+                    }]
+                }
+            }
+        }
+    };
+
+    callSendAPI(messageData);
+}
+
+function sendGenericMessageClothing(recipientId){
+    let messageData = {
+        recipient: {
+            id: recipientId
+        },
+        message: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        title: "Categories",
+                        subtitle: "Choose a category",
+                        item_url: "http://nodeci.azurewebsites.net/",
+                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        buttons: [{
+                            type: "postback",
+                            title: "1 Pair of Jeans (Levis 501 Or Similar)",
+                            payload: "Payload for first button"
+                        }, {
+                            type: "postback",
+                            title: "1 Summer Dress in a Chain Store (Zara, H&M, ...)",
+                            payload: "Payload for second button",
+                        }]
+                    },
+                        {
+                            title: "Categories",
+                            subtitle: "Choose a category",
+                            item_url: "http://nodeci.azurewebsites.net/",
+                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            buttons: [{
+                                type: "postback",
+                                title: "1 Pair of Nike Running Shoes (Mid-Range)",
+                                payload: "Payload for fourth button",
+                            }, {
+                                type: "postback",
+                                title: "Coke/Pepsi (0.33 liter bottle)",
+                                payload: "1 Pair of Men Leather Business Shoes",
+                            }]
+                        }]
                 }
             }
         }
@@ -257,104 +553,6 @@ function callSendAPI(messageData) {
     });
 }
 
-/**
-app.post('/webhook', function (req, res) {
-    let data = req.body;
-
-    // Make sure this is a page subscription
-    if (data.object === 'page') {
-
-        // Iterate over each entry - there may be multiple if batched
-        data.entry.forEach(function(entry) {
-            let pageID = entry.id;
-            let timeOfEvent = entry.time;
-
-            // Iterate over each messaging event
-            entry.messaging.forEach(function(event) {
-                if (event.message) {
-                    receivedMessage(event);
-                } else {
-                    console.log("Webhook received unknown event: ", event);
-                }
-            });
-        });
-
-        // Assume all went well.
-        //
-        // You must send back a 200, within 20 seconds, to let us know
-        // you've successfully received the callback. Otherwise, the request
-        // will time out and we will keep trying to resend.
-        res.sendStatus(200);
-    }
-});
-
-function receivedMessage(event) {
-    let senderID = event.sender.id;
-    let recipientID = event.recipient.id;
-    let timeOfMessage = event.timestamp;
-    let message = event.message;
-
-    console.log("Received message for user %d and page %d at %d with message:",
-        senderID, recipientID, timeOfMessage);
-    console.log(JSON.stringify(message));
-
-    let messageId = message.mid;
-
-    let messageText = message.text;
-    let messageAttachments = message.attachments;
-
-    if (messageText) {
-
-        // If we receive a text message, check to see if it matches a keyword
-        // and send back the example. Otherwise, just echo the text we received.
-        switch (messageText) {
-            case 'generic':
-                sendGenericMessage(senderID);
-                break;
-
-            default:
-                sendTextMessage(senderID, messageText);
-        }
-    } else if (messageAttachments) {
-        sendTextMessage(senderID, "Message with attachment received");
-    }
-}
-
-function sendTextMessage(recipientId, messageText) {
-    let messageData = {
-        recipient: {
-            id: recipientId
-        },
-        message: {
-            text: messageText
-        }
-    };
-
-    callSendAPI(messageData);
-}
-
-function callSendAPI(messageData) {
-    request({
-        uri: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: { access_token: token },
-        method: 'POST',
-        json: messageData
-
-    }, function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            let recipientId = body.recipient_id;
-            let messageId = body.message_id;
-
-            console.log("Successfully sent generic message with id %s to recipient %s",
-                messageId, recipientId);
-        } else {
-            console.error("Unable to send message.");
-            console.error(response);
-            console.error(error);
-        }
-    });
-}
-*/
 
 app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
