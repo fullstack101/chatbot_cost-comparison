@@ -154,7 +154,7 @@ function decision(sender,text){
             }
             break;
         case "choice1":
-            if(text="restaurants")
+            if(text=="restaurants")
             {
                 sendGenericMessageRestaurants(sender);
                 prevFrame=frame;
