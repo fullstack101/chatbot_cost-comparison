@@ -40,8 +40,8 @@ let botID=638196106390731;
 app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
     //let frame="";
-    console.log("DOGE");
-    console.log("Length: "+messaging_events.length);
+    //console.log("DOGE");
+    //console.log("Length: "+messaging_events.length);
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
@@ -60,123 +60,126 @@ app.post('/webhook/', function(req, res) {
         console.log("text: "+event.message.text);*/
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
+            decision(sender,text);
         }
         if (event.postback){
             let payload = event.postback.payload;
+            decision(sender,payload);
             //sendText(sender,"The payload is: "+payload);
             console.log("payload: "+payload);
         }
 
-        console.log("Frame: "+frame);
-        let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
-        switch (frame){
-            case "":
-                //sendText(sender,"Empty Frame:" + frame);
-                console.log("Empty");
-                if(text=="hi")
-                {
-                    sendText(sender,greeting);
-                    frame = "greeting";
-                }
-                break;
-
-            case "greeting":
-                console.log("Greeting");
-                if(text.toLowerCase()=="yes")
-                {
-                    sendText(sender,"How would you prefer to check the prices?");
-                    sendGenericMessage(sender);
-                    frame="answer";
-                }
-                else
-                {
-                    sendText(sender,"Do you have a question to the administration?");
-                    frame="askAdministration";
-                }
-                break;
-
-            case "askAdministration":
-                console.log("ask");
-                if(text.toLowerCase()=="yes")
-                {
-                    sendText(sender,"I will ask the administration");
-                    sendText(sender, "Thank you messaging us. Goodbye");
-                    frame="";
-                }
-                else
-                {
-                    sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.");
-                    frame="";
-                }
-                break;
-            case "city":
-                console.log("city");
-                sendText(sender, text+" is a nice city.");
-                sendText(sender, "What comparison category do you want to see?");
-                sendGenericMessagePriceType(sender);
-                frame="choice1";
-                break;
-            case "answer":
-                if(text=="chat with bot" || payload=="chat")
-                {
-                    sendText(sender, "Where are you from?");
-                    frame="city";
-                }
-                else
-                {
-                    sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
-                    frame="";
-                }
-                break;
-            case "choice1":
-                if(text="Restaurants")
-                {
-                    sendGenericMessageRestaurants(sender);
-                    frame="choice2";
-                }
-                else if(text == "Markets")
-                {
-                    sendGenericMessageMarkets(sender);
-                    frame="choice2";
-                }
-                else if(text == "Transportation")
-                {
-                    sendGenericMessageTransportation(sender);
-                    frame="choice2";
-                }
-                else if(text == "Utilities(Monthly)")
-                {
-                    sendGenericMessageUtilities(sender);
-                    frame="choice2";
-                }
-                else if(text == "Sports and Leisure")
-                {
-                    sendGenericMessageSports(sender);
-                    frame="choice2";
-                }
-                else if(text == "Clothing and Shoes")
-                {
-                    sendGenericMessageClothing(sender);
-                    frame="choice2";
-                }
-                else if(text=="quit")
-                {
-                    sendText(sender,"Thank you messaging us. Goodbye.");
-                    frame="";
-                }
-                else
-                {
-                    sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
-                    sendGenericMessagePriceType(sender);
-                }
-                break;
-        }
     }
     res.sendStatus(200)
 });
 
+function decision(sender,text){
+    let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
+    switch (frame){
+        case "":
+            //sendText(sender,"Empty Frame:" + frame);
+            console.log("Empty");
+            if(text=="hi")
+            {
+                sendText(sender,greeting);
+                frame = "greeting";
+            }
+            break;
+
+        case "greeting":
+            console.log("Greeting");
+            if(text.toLowerCase()=="yes")
+            {
+                sendText(sender,"How would you prefer to check the prices?");
+                sendGenericMessage(sender);
+                frame="answer";
+            }
+            else
+            {
+                sendText(sender,"Do you have a question to the administration?");
+                frame="askAdministration";
+            }
+            break;
+
+        case "askAdministration":
+            console.log("ask");
+            if(text.toLowerCase()=="yes")
+            {
+                sendText(sender,"I will ask the administration");
+                sendText(sender, "Thank you messaging us. Goodbye");
+                frame="";
+            }
+            else
+            {
+                sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.");
+                frame="";
+            }
+            break;
+        case "city":
+            console.log("city");
+            sendText(sender, text+" is a nice city.");
+            sendText(sender, "What comparison category do you want to see?");
+            sendGenericMessagePriceType(sender);
+            frame="choice1";
+            break;
+        case "answer":
+            if(text=="chat with bot")
+            {
+                sendText(sender, "Where are you from?");
+                frame="city";
+            }
+            else
+            {
+                sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
+                frame="";
+            }
+            break;
+        case "choice1":
+            if(text="Restaurants")
+            {
+                sendGenericMessageRestaurants(sender);
+                frame="choice2";
+            }
+            else if(text == "Markets")
+            {
+                sendGenericMessageMarkets(sender);
+                frame="choice2";
+            }
+            else if(text == "Transportation")
+            {
+                sendGenericMessageTransportation(sender);
+                frame="choice2";
+            }
+            else if(text == "Utilities(Monthly)")
+            {
+                sendGenericMessageUtilities(sender);
+                frame="choice2";
+            }
+            else if(text == "Sports and Leisure")
+            {
+                sendGenericMessageSports(sender);
+                frame="choice2";
+            }
+            else if(text == "Clothing and Shoes")
+            {
+                sendGenericMessageClothing(sender);
+                frame="choice2";
+            }
+            else if(text=="quit")
+            {
+                sendText(sender,"Thank you messaging us. Goodbye.");
+                frame="";
+            }
+            else
+            {
+                sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
+                sendGenericMessagePriceType(sender);
+            }
+            break;
+    }
+}
 
 function sendText(sender, text) {
     let messageData = {text: text};
