@@ -160,8 +160,9 @@ app.post('/webhook/', function(req, res) {
             }
         }
         else if (event.postback){
-            let payload = event.postback.payload;
-            sendText(sender,"The payload is: ");
+            let payload = JSON.stringify(event.postback);
+            sendText(sender,"The payload is: " + payload);
+            continue
         }
 
     }
