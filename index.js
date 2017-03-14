@@ -48,7 +48,11 @@ app.post('/webhook/', function(req, res) {
         console.log("Event: "+event);
         console.log("Event: "+JSON.stringify(event));
         console.log("Event: "+JSON.stringify(event.postback));
-        console.log("Event: "+event.postback.payload);
+        if(event.postback)
+        {
+            console.log("Event: "+event.postback.payload);
+        }
+
         console.log("Sender: "+sender);
         //sendText(sender, "Frame: "+frame);
         console.log("message: "+ event.message);
