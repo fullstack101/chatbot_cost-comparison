@@ -81,6 +81,10 @@ function decision(sender,text){
     {
         frame=prevFrame;
     }
+    if(text=="quit")
+    {
+        frame="";
+    }
     switch (frame){
         case "":
             //sendText(sender,"Empty Frame:" + frame);
@@ -126,7 +130,7 @@ function decision(sender,text){
             }
             break;
         case "city":
-            console.log("city");
+            //console.log("city");
             sendText(sender, text+" is a nice city.");
             sendText(sender, "What comparison category do you want to see?");
             sendGenericMessagePriceType(sender);
