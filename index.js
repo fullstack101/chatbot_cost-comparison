@@ -46,8 +46,13 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
+        console.log("Sender: "+sender);
+        //sendText(sender, "Frame: "+frame);
+        console.log("message: "+ event.message);
+        console.log("text: "+event.message.text);
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
+            console.log("Frame: "+frame);
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
             switch (frame){
@@ -98,7 +103,7 @@ app.post('/webhook/', function(req, res) {
                     frame="choice1";
                     break;
                 case "answer":
-                    if(text="chat with bot")
+                    if(text=="chat with bot")
                     {
                         sendText(sender, "Where are you from?");
                         frame="city";
