@@ -45,6 +45,7 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
+        let payload="";
        /* console.log("Event: "+event);
         console.log("Event: "+JSON.stringify(event));
         console.log("Event: "+JSON.stringify(event.postback));
@@ -59,13 +60,6 @@ app.post('/webhook/', function(req, res) {
         console.log("text: "+event.message.text);*/
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
-            let payload="";
-            if (event.postback)
-            {
-                payload=event.payload;
-                console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload);
-                sendText(sender,payload);
-            }
             console.log("Frame: "+frame);
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
@@ -117,7 +111,7 @@ app.post('/webhook/', function(req, res) {
                     frame="choice1";
                     break;
                 case "answer":
-                    if(text=="chat with bot")
+                    if(text=="chat with bot" || payload=="chat")
                     {
                         sendText(sender, "Where are you from?");
                         frame="city";
@@ -171,6 +165,11 @@ app.post('/webhook/', function(req, res) {
                     }
                     break;
             }
+        }
+        if (event.postback){
+            let payload = event.postback.payload;
+            //sendText(sender,"The payload is: "+payload);
+            console.log("payload: "+payload);
         }
 
     }
@@ -277,7 +276,7 @@ function sendGenericMessage(recipientId) {
                         }, {
                             type: "postback",
                             title: "Chat with bot",
-                            payload: "Payload for first bubble"
+                            payload: "chat"
                         }],
                     }]
                 }
