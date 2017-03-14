@@ -161,7 +161,7 @@ app.post('/webhook/', function(req, res) {
         }
         else if (event.postback){
             let payload = event.postback.payload;
-            sendText(sender,"The payload is: "+payload);
+            sendText(sender,"The payload is: ");
         }
 
     }
