@@ -125,7 +125,7 @@ function decision(sender,text){
             frame="choice1";
             break;
         case "answer":
-            if(text=="chat with bot")
+            if(text=="chat")
             {
                 sendText(sender, "Where are you from?");
                 frame="city";
