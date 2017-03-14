@@ -132,8 +132,6 @@ function decision(sender,text){
             }
             break;
         case "city":
-            //console.log("city");
-            sendText(sender, text+" is a nice city.");
             sendText(sender, "What comparison category do you want to see?");
             sendGenericMessagePriceType(sender);
             prevFrame=frame;
@@ -200,6 +198,154 @@ function decision(sender,text){
             {
                 sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
                 sendGenericMessagePriceType(sender);
+            }
+            break;
+        case "choice2":
+            if(text=="meal")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="McMeal")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="McMeal")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="beer")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="cappuccino")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="coke")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="water")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="milk")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="cheese")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="apples")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="potato")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="wine")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="cigarettes")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="ticket")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="taxi")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="gasoline")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="mobile")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="internet")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="fitness")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="cinema")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="jeans")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            else if(text=="shoes")
+            {
+                //send request
+                sendText(sender,"Do you want to see something else?");
+                frame="checkAgain";
+            }
+            break;
+        case "checkAgain":
+            if(text=="yes")
+            {
+                frame="city";
+            }
+            else if(text=="no")
+            {
+                frame="greeting";
+            }
+            else
+            {
+                sendText(sender, "Cannot recognize answer. Please write yes or no.")
             }
             break;
     }
