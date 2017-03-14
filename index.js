@@ -86,7 +86,6 @@ function decision(sender,text){
         frame="";
     }
 
-    sendText(sender, "The text is: "+text);
     switch (frame){
         case "":
             //sendText(sender,"Empty Frame:" + frame);
@@ -337,15 +336,20 @@ function decision(sender,text){
         case "checkAgain":
             if(text=="yes")
             {
-                frame="city";
+                sendText(sender, "What comparison category do you want to see?");
+                sendGenericMessagePriceType(sender);
+                prevFrame=frame;
+                frame="choice1";
             }
             else if(text=="no")
             {
-                frame="greeting";
+                sendText(sender,"Do you have a question to the administration?");
+                prevFrame=frame;
+                frame="askAdministration";
             }
             else
             {
-                sendText(sender, "Cannot recognize answer. Please write yes or no.")
+                sendText(sender, "Cannot recognize answer. Please write yes or no.");
             }
             break;
     }
