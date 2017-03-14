@@ -45,7 +45,7 @@ app.post('/webhook/', function(req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
-        console.log("Event: "+event);
+       /* console.log("Event: "+event);
         console.log("Event: "+JSON.stringify(event));
         console.log("Event: "+JSON.stringify(event.postback));
         if(event.postback)
@@ -56,7 +56,7 @@ app.post('/webhook/', function(req, res) {
         console.log("Sender: "+sender);
         //sendText(sender, "Frame: "+frame);
         console.log("message: "+ event.message);
-        console.log("text: "+event.message.text);
+        console.log("text: "+event.message.text);*/
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
             let payload="";
