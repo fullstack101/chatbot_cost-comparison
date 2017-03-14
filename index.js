@@ -72,7 +72,7 @@ app.post('/webhook/', function(req, res) {
                     {
                         sendText(sender,"How would you prefer to check the prices?");
                         sendGenericMessage(sender);
-                        //frame="answer";
+                        frame="answer";
                     }
                     else
                     {
@@ -260,10 +260,10 @@ function sendGenericMessage(recipientId) {
                             url: "http://nodeci.azurewebsites.net/",
                             title: "Check Prices online"
                         }, {
-                            type: "chat with bot",
+                            type: "postback",
                             title: "Chat with bot",
                             payload: "Payload for first bubble",
-                        }]
+                        }],
                     }]
                 }
             }
