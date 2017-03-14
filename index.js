@@ -60,7 +60,7 @@ app.post('/webhook/', function(req, res) {
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
             let payload="";
-            if (event.payload)
+            if (event.postback)
             {
                 payload=event.payload;
                 console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload)
