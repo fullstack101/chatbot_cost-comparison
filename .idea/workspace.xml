@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40a3e1f3-8812-4d15-816f-6376dcf3d418" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,12 +24,11 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="650">
-              <caret line="102" column="34" lean-forward="false" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
+            <state relative-caret-position="700">
+              <caret line="263" column="47" lean-forward="false" selection-start-line="263" selection-start-column="47" selection-end-line="263" selection-end-column="47" />
               <folding>
                 <element signature="n#!!block;n#sendText#0" expanded="false" />
                 <element signature="n#!!block;n#sendGenericMessagePriceType#0" expanded="false" />
-                <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
                 <element signature="n#!!block;n#sendGenericMessageRestaurants#0" expanded="false" />
                 <element signature="n#!!block;n#sendGenericMessageMarkets#0" expanded="false" />
                 <element signature="n#!!block;n#sendGenericMessageTransportation#0" expanded="false" />
@@ -223,12 +223,12 @@
       <workItem from="1488824757517" duration="12384000" />
       <workItem from="1489334227109" duration="13201000" />
       <workItem from="1489394861944" duration="4298000" />
-      <workItem from="1489519082446" duration="3138000" />
+      <workItem from="1489519082446" duration="3816000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33021000" />
+    <option name="totallyTimeSpent" value="33699000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="0" width="2164" height="1402" extended-state="0" />
@@ -270,7 +270,6 @@
           <folding>
             <element signature="n#!!block;n#sendText#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessagePriceType#0" expanded="false" />
-            <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageRestaurants#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageMarkets#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageTransportation#0" expanded="false" />
@@ -297,7 +296,6 @@
           <folding>
             <element signature="n#!!block;n#sendText#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessagePriceType#0" expanded="false" />
-            <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageRestaurants#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageMarkets#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageTransportation#0" expanded="false" />
@@ -324,7 +322,6 @@
           <folding>
             <element signature="n#!!block;n#sendText#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessagePriceType#0" expanded="false" />
-            <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageRestaurants#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageMarkets#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageTransportation#0" expanded="false" />
@@ -355,12 +352,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="102" column="34" lean-forward="false" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
+        <state relative-caret-position="700">
+          <caret line="263" column="47" lean-forward="false" selection-start-line="263" selection-start-column="47" selection-end-line="263" selection-end-column="47" />
           <folding>
             <element signature="n#!!block;n#sendText#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessagePriceType#0" expanded="false" />
-            <element signature="n#!!block;n#sendGenericMessage#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageRestaurants#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageMarkets#0" expanded="false" />
             <element signature="n#!!block;n#sendGenericMessageTransportation#0" expanded="false" />

@@ -263,7 +263,7 @@ function sendGenericMessage(recipientId) {
                             type: "chat with bot",
                             title: "Chat with bot",
                             payload: "Payload for first bubble",
-                        }],
+                        }]
                     }]
                 }
             }
