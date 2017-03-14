@@ -41,7 +41,9 @@ app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
     //let frame="";
     console.log("DOGE");
-    console.log("Events: "+messaging_events);
+    console.log("Event: "+event);
+    console.log("Event: "+JSON.stringify(event));
+    console.log("Event: "+JSON.stringify(event.postback));
     console.log("Length: "+messaging_events.length);
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
