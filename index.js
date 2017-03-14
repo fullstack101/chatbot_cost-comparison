@@ -63,7 +63,8 @@ app.post('/webhook/', function(req, res) {
             if (event.postback)
             {
                 payload=event.payload;
-                console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload)
+                console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload);
+                sendText(sender,payload);
             }
             console.log("Frame: "+frame);
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
@@ -170,16 +171,6 @@ app.post('/webhook/', function(req, res) {
                     }
                     break;
             }
-        }
-        if (event.postback){
-            let payload = event.postback.payload;
-            sendText(sender,"The payload is: "+payload);
-            console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload)
-        }
-
-        if (event.postback) {
-            let text = JSON.stringify(event.postback);
-            sendText(sender, "Postback received: "+text.substring(0, 200));
         }
 
     }
