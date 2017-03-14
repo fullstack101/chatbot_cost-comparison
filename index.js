@@ -164,6 +164,11 @@ app.post('/webhook/', function(req, res) {
             console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload)
         }
 
+        if (event.postback) {
+            let text = JSON.stringify(event.postback);
+            sendText(sender, "Postback received: "+text.substring(0, 200));
+        }
+
     }
     res.sendStatus(200)
 });
