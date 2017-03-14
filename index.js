@@ -137,32 +137,32 @@ function decision(sender,text){
             }
             break;
         case "choice1":
-            if(text="Restaurants")
+            if(text="restaurants")
             {
                 sendGenericMessageRestaurants(sender);
                 frame="choice2";
             }
-            else if(text == "Markets")
+            else if(text == "markets")
             {
                 sendGenericMessageMarkets(sender);
                 frame="choice2";
             }
-            else if(text == "Transportation")
+            else if(text == "transportation")
             {
                 sendGenericMessageTransportation(sender);
                 frame="choice2";
             }
-            else if(text == "Utilities(Monthly)")
+            else if(text == "utilities")
             {
                 sendGenericMessageUtilities(sender);
                 frame="choice2";
             }
-            else if(text == "Sports and Leisure")
+            else if(text == "sports")
             {
                 sendGenericMessageSports(sender);
                 frame="choice2";
             }
-            else if(text == "Clothing and Shoes")
+            else if(text == "clothing")
             {
                 sendGenericMessageClothing(sender);
                 frame="choice2";
@@ -219,15 +219,15 @@ function sendGenericMessagePriceType(recipientId){
                         buttons: [{
                             type: "postback",
                             title: "Restaurants",
-                            payload: "Payload for first button"
+                            payload: "restaurants"
                         }, {
                             type: "postback",
                             title: "Markets",
-                            payload: "Payload for second button",
+                            payload: "markets",
                         }, {
                             type: "postback",
                             title: "Transportation",
-                            payload: "Payload for third button",
+                            payload: "transportation",
                         }]
                     },
                         {
@@ -238,15 +238,15 @@ function sendGenericMessagePriceType(recipientId){
                             buttons: [{
                             type: "postback",
                             title: "Utilities(Monthly)",
-                            payload: "Payload for fourth button",
+                            payload: "utilities",
                         }, {
                             type: "postback",
                             title: "Sports and Leisure",
-                            payload: "Payload for fifth button",
+                            payload: "sports",
                         }, {
                             type: "postback",
                             title: "Clothing and Shoes",
-                            payload: "Payload for sixth button",
+                            payload: "clothing",
                         }]
                     }]
                 }
@@ -307,16 +307,16 @@ function sendGenericMessageRestaurants(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "Meal, Inexpensive Restaurant",
-                            payload: "Payload for first button"
+                            title: "Meal Restaurant",
+                            payload: "meal"
                         }, {
                             type: "postback",
                             title: "McMeal at McDonalds",
-                            payload: "Payload for second button",
+                            payload: "McMeal",
                         }, {
                             type: "postback",
-                            title: "Domestic Beer (0.5 liter draught)",
-                            payload: "Payload for third button",
+                            title: "Domestic Beer",
+                            payload: "beer",
                         }]
                     },
                         {
@@ -327,15 +327,15 @@ function sendGenericMessageRestaurants(recipientId){
                             buttons: [{
                                 type: "postback",
                                 title: "Cappuccino",
-                                payload: "Payload for fourth button",
+                                payload: "cappuccino",
                             }, {
                                 type: "postback",
-                                title: "Coke/Pepsi (0.33 liter bottle)",
-                                payload: "Payload for fifth button",
+                                title: "Coke/Pepsi",
+                                payload: "coke",
                             }, {
                                 type: "postback",
-                                title: "Water (0.33 liter bottle)",
-                                payload: "Payload for sixth button",
+                                title: "Water",
+                                payload: "water",
                             }]
                         }]
                 }
@@ -363,16 +363,16 @@ function sendGenericMessageMarkets(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "Milk (regular), (1 liter)",
-                            payload: "Payload for first button"
+                            title: "Milk(1 liter)",
+                            payload: "milk"
                         }, {
                             type: "postback",
                             title: "Local Cheese (1kg)",
-                            payload: "Payload for second button",
+                            payload: "cheese",
                         }, {
                             type: "postback",
                             title: "Apples (1kg)",
-                            payload: "Payload for third button",
+                            payload: "apples",
                         }]
                     },
                         {
@@ -383,15 +383,15 @@ function sendGenericMessageMarkets(recipientId){
                             buttons: [{
                                 type: "postback",
                                 title: "Potato (1kg)",
-                                payload: "Payload for fourth button",
+                                payload: "potato",
                             }, {
                                 type: "postback",
-                                title: "Bottle of Wine (Mid-Range)",
-                                payload: "Payload for fifth button",
+                                title: "Bottle of Wine",
+                                payload: "wine",
                             }, {
                                 type: "postback",
-                                title: "Pack of Cigarettes (Marlboro)",
-                                payload: "Payload for sixth button",
+                                title: "Pack of Cigarettes",
+                                payload: "cigarettes",
                             }]
                         }]
                 }
@@ -419,16 +419,16 @@ function sendGenericMessageTransportation(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "One-way Ticket (Local Transport)",
-                            payload: "Payload for first button"
+                            title: "Ticket (Local Transport)",
+                            payload: "ticket"
                         }, {
                             type: "postback",
-                            title: "Taxi Start (Normal Tariff)",
-                            payload: "Payload for second button",
+                            title: "Taxi(Normal Tariff)",
+                            payload: "taxi",
                         }, {
                             type: "postback",
                             title: "Gasoline (1 liter)",
-                            payload: "Payload for third button",
+                            payload: "gasoline",
                         }]
                     }]
                 }
@@ -456,12 +456,12 @@ function sendGenericMessageUtilities(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "1 min. of Prepaid Mobile Tariff Local (No Discounts or Plans)",
-                            payload: "Payload for first button"
+                            title: "1 min. Mobile Tariff",
+                            payload: "mobile"
                         }, {
                             type: "postback",
-                            title: "Internet (10 Mbps, Unlimited Data, Cable/ADSL)",
-                            payload: "Payload for second button",
+                            title: "Internet(10 Mbps)",
+                            payload: "internet",
                         }]
                     }]
                 }
@@ -489,12 +489,12 @@ function sendGenericMessageSports(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "Fitness Club, Monthly Fee for 1 Adult",
-                            payload: "Payload for first button"
+                            title: "Fitness Club",
+                            payload: "fitness"
                         }, {
                             type: "postback",
-                            title: "Cinema, International Release, 1 Seat",
-                            payload: "Payload for second button",
+                            title: "Cinema",
+                            payload: "cinema",
                         }]
                     }]
                 }
@@ -522,29 +522,14 @@ function sendGenericMessageClothing(recipientId){
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
                         buttons: [{
                             type: "postback",
-                            title: "1 Pair of Jeans (Levis 501 Or Similar)",
-                            payload: "Payload for first button"
+                            title: "Pair of Jeans",
+                            payload: "jeans"
                         }, {
                             type: "postback",
-                            title: "1 Summer Dress in a Chain Store (Zara, H&M, ...)",
-                            payload: "Payload for second button",
+                            title: "Nike Shoes",
+                            payload: "shoes",
                         }]
-                    },
-                        {
-                            title: "Categories",
-                            subtitle: "Choose a category",
-                            item_url: "http://nodeci.azurewebsites.net/",
-                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
-                            buttons: [{
-                                type: "postback",
-                                title: "1 Pair of Nike Running Shoes (Mid-Range)",
-                                payload: "Payload for fourth button",
-                            }, {
-                                type: "postback",
-                                title: "Coke/Pepsi (0.33 liter bottle)",
-                                payload: "1 Pair of Men Leather Business Shoes",
-                            }]
-                        }]
+                    }]
                 }
             }
         }
