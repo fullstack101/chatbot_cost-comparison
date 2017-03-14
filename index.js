@@ -268,7 +268,7 @@ function sendGenericMessage(recipientId) {
                 payload: {
                     template_type: "generic",
                     elements: [{
-                        title: "Cost-comaprison",
+                        title: "Cost-comparison",
                         subtitle: "Check the prices in Blagoevgrad",
                         item_url: "http://nodeci.azurewebsites.net/",
                         image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
@@ -279,7 +279,7 @@ function sendGenericMessage(recipientId) {
                         }, {
                             type: "postback",
                             title: "Chat with bot",
-                            payload: "Payload for first bubble",
+                            payload: "Payload for first bubble"
                         }],
                     }]
                 }
