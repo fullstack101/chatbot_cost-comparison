@@ -53,7 +53,6 @@ app.post('/webhook/', function(req, res) {
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
             console.log("Frame: "+frame);
-            console.log("Postback: "+payload);
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
             switch (frame){
@@ -160,9 +159,8 @@ app.post('/webhook/', function(req, res) {
             }
         }
         else if (event.postback){
-            let payload = JSON.stringify(event.postback);
-            sendText(sender,"The payload is: " + payload);
-            continue
+            let payload = event.postback.payload;
+            sendText(sender,"The payload is: "+payload);
         }
 
     }
