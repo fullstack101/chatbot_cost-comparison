@@ -52,6 +52,12 @@ app.post('/webhook/', function(req, res) {
         console.log("text: "+event.message.text);
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
+            let payload="";
+            if (event.postback)
+            {
+                payload=event.postback.payload;
+                console.log("PAYLOAD PAYLOAD PAYLOAD"+ payload)
+            }
             console.log("Frame: "+frame);
             let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
 
