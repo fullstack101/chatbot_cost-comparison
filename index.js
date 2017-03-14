@@ -35,6 +35,7 @@ app.get('/webhook', function(req, res) {
 });
 
 let frame = "";
+let prevFrame="";
 let botID=638196106390731;
 
 app.post('/webhook/', function(req, res) {
@@ -76,7 +77,10 @@ app.post('/webhook/', function(req, res) {
 
 function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
-
+    if(text=="back")
+    {
+        frame=prevFrame;
+    }
     switch (frame){
         case "":
             //sendText(sender,"Empty Frame:" + frame);
@@ -94,11 +98,13 @@ function decision(sender,text){
             {
                 sendText(sender,"How would you prefer to check the prices?");
                 sendGenericMessage(sender);
+                prevFrame=frame;
                 frame="answer";
             }
             else
             {
                 sendText(sender,"Do you have a question to the administration?");
+                prevFrame=frame;
                 frame="askAdministration";
             }
             break;
@@ -109,11 +115,13 @@ function decision(sender,text){
             {
                 sendText(sender,"I will ask the administration");
                 sendText(sender, "Thank you messaging us. Goodbye");
+                prevFrame=frame;
                 frame="";
             }
             else
             {
                 sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.");
+                prevFrame=frame;
                 frame="";
             }
             break;
@@ -122,17 +130,20 @@ function decision(sender,text){
             sendText(sender, text+" is a nice city.");
             sendText(sender, "What comparison category do you want to see?");
             sendGenericMessagePriceType(sender);
+            prevFrame=frame;
             frame="choice1";
             break;
         case "answer":
             if(text=="chat")
             {
                 sendText(sender, "Where are you from?");
+                prevFrame=frame;
                 frame="city";
             }
             else
             {
                 sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
+                prevFrame=frame;
                 frame="";
             }
             break;
@@ -140,36 +151,43 @@ function decision(sender,text){
             if(text="restaurants")
             {
                 sendGenericMessageRestaurants(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text == "markets")
             {
                 sendGenericMessageMarkets(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text == "transportation")
             {
                 sendGenericMessageTransportation(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text == "utilities")
             {
                 sendGenericMessageUtilities(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text == "sports")
             {
                 sendGenericMessageSports(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text == "clothing")
             {
                 sendGenericMessageClothing(sender);
+                prevFrame=frame;
                 frame="choice2";
             }
             else if(text=="quit")
             {
                 sendText(sender,"Thank you messaging us. Goodbye.");
+                prevFrame=frame;
                 frame="";
             }
             else
