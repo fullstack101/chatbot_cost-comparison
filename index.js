@@ -83,12 +83,13 @@ function decision(sender,text){
     }
     if(text=="quit")
     {
+        sendText(sender, "Thank you messaging us. Goodbye");
         frame="";
     }
     if(text.toLowerCase()=="help")
     {
-        sendText(sender,"To go back - type 'back'");
-        sendText(sender,"To end conversation - type 'quit'");
+        sendText(sender,"To go back - type 'back'" +
+            "To end conversation - type 'quit'");
     }
 
     switch (frame){
@@ -108,7 +109,7 @@ function decision(sender,text){
                 prevFrame=frame;
                 frame="answer";
             }
-            else
+            else if(text.toLowerCase()!="help")
             {
                 sendText(sender,"Do you have a question to the administration?");
                 prevFrame=frame;
