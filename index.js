@@ -79,16 +79,20 @@ function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
     if(text=="back")
     {
-        frame=prevFrame;
+        goback(sender,frame);
     }
     if(text=="quit")
     {
         frame="";
     }
+    if(text.toLowerCase()==help)
+    {
+        sendText(sender,"To go back - type 'back'");
+        sendText(sender,"To end conversation - type 'quit'");
+    }
 
     switch (frame){
         case "":
-            console.log("Empty");
             if(text=="hi")
             {
                 sendText(sender,greeting);
@@ -97,7 +101,6 @@ function decision(sender,text){
             break;
 
         case "greeting":
-            console.log("Greeting");
             if(text.toLowerCase()=="yes")
             {
                 sendText(sender,"How would you prefer to check the prices?");
@@ -114,17 +117,16 @@ function decision(sender,text){
             break;
 
         case "askAdministration":
-            console.log("ask");
             if(text.toLowerCase()=="yes")
             {
-                sendText(sender,"I will ask the administration");
+                sendText(sender,"An admission officer will contact you as soon as possible.");
                 sendText(sender, "Thank you messaging us. Goodbye");
                 prevFrame=frame;
                 frame="";
             }
             else
             {
-                sendText(sender, "The bot can't answer these questions. A person from admissions office will answer as soon as possible.");
+                sendText(sender, "The bot can't answer these questions. An admission officer will answer as soon as possible.");
                 prevFrame=frame;
                 frame="";
             }
@@ -199,148 +201,105 @@ function decision(sender,text){
             }
             break;
         case "choice2":
+            let id="";
             if(text=="meal")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=1;
             }
             else if(text=="McMeal")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
-            }
-            else if(text=="McMeal")
-            {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=3
             }
             else if(text=="beer")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=4;
             }
             else if(text=="cappuccino")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=114;
             }
             else if(text=="coke")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=6;
             }
             else if(text=="water")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+               id=7;
             }
             else if(text=="milk")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=8;
             }
             else if(text=="cheese")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=12;
             }
             else if(text=="apples")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=110;
             }
             else if(text=="potato")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+               id=112;
             }
             else if(text=="wine")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=14;
             }
             else if(text=="cigarettes")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=17;
             }
             else if(text=="ticket")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=18;
             }
             else if(text=="taxi")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=107;
             }
             else if(text=="gasoline")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=24;
             }
             else if(text=="mobile")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=32;
             }
             else if(text=="internet")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=33;
             }
             else if(text=="fitness")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                //id
             }
             else if(text=="cinema")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                id=44;
             }
             else if(text=="jeans")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+                //id=
             }
             else if(text=="shoes")
             {
-                //send request
-                sendText(sender,"Do you want to see something else?");
-                frame="checkAgain";
+
             }
+
+            //send request
+            sendText(sender,"Do you want to see something else?");
+            frame="checkAgain";
             break;
         case "checkAgain":
-            if(text=="yes")
+            if(text.toLowerCase()=="yes")
             {
                 sendText(sender, "What comparison category do you want to see?");
                 sendGenericMessagePriceType(sender);
                 prevFrame=frame;
                 frame="choice1";
             }
-            else if(text=="no")
+            else if(text.toLowerCase()=="no")
             {
                 sendText(sender,"Do you have a question to the administration?");
                 prevFrame=frame;
@@ -732,6 +691,30 @@ function callSendAPI(messageData) {
         }
     });
 }
+
+function goback(sender, frame){
+    switch (frame){
+        case "greeting":
+            sendText(sender,"Can't go back.");
+            break;
+        case "askAdministration":
+            frame="greeting";
+            break;
+        case "city":
+            frame="answer";
+            break;
+        case "answer":
+            frame="greeting";
+            break;
+        case "choice1":
+            frame="city";
+            break;
+        case "choice2":
+            frame="choice1";
+            break;
+    }
+}
+
 
 
 app.listen(app.get('port'),function(res,req) {
