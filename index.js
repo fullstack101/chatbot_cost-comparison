@@ -79,7 +79,10 @@ function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
     if(text=="back")
     {
+        console.log("Frame: "+frame);
         goback(sender,frame,text);
+        console.log("Frame is changed: "+frame);
+        console.log("Text: "+text);
     }
     if(text=="quit")
     {
