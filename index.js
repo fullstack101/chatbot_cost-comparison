@@ -79,7 +79,7 @@ function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
     if(text=="back")
     {
-        goback(sender,frame);
+        goback(sender,frame,text);
     }
     if(text=="quit")
     {
@@ -145,7 +145,7 @@ function decision(sender,text){
                 prevFrame=frame;
                 frame="city";
             }
-            else
+            else if(text.toLowerCase()!="help" && text.toLowerCase()!="back")
             {
                 sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
                 prevFrame=frame;
@@ -693,19 +693,18 @@ function callSendAPI(messageData) {
     });
 }
 
-function goback(sender, frame){
+function goback(sender, frame, text){
     switch (frame){
         case "greeting":
             sendText(sender,"Can't go back.");
             break;
-        case "askAdministration":
-            frame="greeting";
+        case "answer":
+            frame="";
+            text="hi";
             break;
         case "city":
-            frame="answer";
-            break;
-        case "answer":
             frame="greeting";
+            text="yes";
             break;
         case "choice1":
             frame="city";
