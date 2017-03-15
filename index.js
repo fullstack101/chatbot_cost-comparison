@@ -110,7 +110,7 @@ function decision(sender,text,city){
     }
     if(text.toLowerCase()=="help")
     {
-        sendText(sender,"To go back - type 'back'/n" +
+        sendText(sender,"To go back - type 'back'. " +
             "To end conversation - type 'quit'");
     }
     else {
