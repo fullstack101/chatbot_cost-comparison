@@ -115,227 +115,189 @@ function decision(sender,text,city){
         sendText(sender,"To go back - type 'back'" +
             "To end conversation - type 'quit'");
     }
+    else {
+        switch (frame) {
+            case "":
+                if (text == "hi") {
+                    sendText(sender, greeting);
+                    frame = "greeting";
+                }
+                break;
 
-    switch (frame){
-        case "":
-            if(text=="hi")
-            {
-                sendText(sender,greeting);
-                frame = "greeting";
-            }
-            break;
+            case "greeting":
+                if (text.toLowerCase() == "yes") {
+                    sendText(sender, "How would you prefer to check the prices?");
+                    sendGenericMessage(sender);
+                    prevFrame = frame;
+                    frame = "answer";
+                }
+                else if (text.toLowerCase() != "help") {
+                    sendText(sender, "Do you have a question to the administration?");
+                    prevFrame = frame;
+                    frame = "askAdministration";
+                }
+                break;
 
-        case "greeting":
-            if(text.toLowerCase()=="yes")
-            {
-                sendText(sender,"How would you prefer to check the prices?");
-                sendGenericMessage(sender);
-                prevFrame=frame;
-                frame="answer";
-            }
-            else if(text.toLowerCase()!="help")
-            {
-                sendText(sender,"Do you have a question to the administration?");
-                prevFrame=frame;
-                frame="askAdministration";
-            }
-            break;
-
-        case "askAdministration":
-            if(text.toLowerCase()=="yes")
-            {
-                sendText(sender,"An admission officer will contact you as soon as possible.");
-                sendText(sender, "Thank you messaging us. Goodbye");
-                prevFrame=frame;
-                frame="";
-            }
-            else
-            {
-                sendText(sender, "The bot can't answer these questions. An admission officer will answer as soon as possible.");
-                prevFrame=frame;
-                frame="";
-            }
-            break;
-        case "city":
-            city=text.toLowerCase();
-            sendText(sender, "What comparison category do you want to see?");
-            sendGenericMessagePriceType(sender);
-            prevFrame=frame;
-            frame="choice1";
-            break;
-        case "answer":
-            if(text=="chat")
-            {
-                sendText(sender, "Where are you from?");
-                prevFrame=frame;
-                frame="city";
-            }
-            else if(text.toLowerCase()!="help" && text.toLowerCase()!="back")
-            {
-                sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
-                prevFrame=frame;
-                frame="";
-            }
-            break;
-        case "choice1":
-            if(text=="restaurants")
-            {
-                sendGenericMessageRestaurants(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text == "markets")
-            {
-                sendGenericMessageMarkets(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text == "transportation")
-            {
-                sendGenericMessageTransportation(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text == "utilities")
-            {
-                sendGenericMessageUtilities(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text == "sports")
-            {
-                sendGenericMessageSports(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text == "clothing")
-            {
-                sendGenericMessageClothing(sender);
-                prevFrame=frame;
-                frame="choice2";
-            }
-            else if(text=="quit")
-            {
-                sendText(sender,"Thank you messaging us. Goodbye.");
-                prevFrame=frame;
-                frame="";
-            }
-            else
-            {
-                sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
-                sendGenericMessagePriceType(sender);
-            }
-            break;
-        case "choice2":
-            let id="";
-            if(text=="meal")
-            {
-                id=1;
-            }
-            else if(text=="McMeal")
-            {
-                id=3
-            }
-            else if(text=="beer")
-            {
-                id=4;
-            }
-            else if(text=="cappuccino")
-            {
-                id=114;
-            }
-            else if(text=="coke")
-            {
-                id=6;
-            }
-            else if(text=="water")
-            {
-               id=7;
-            }
-            else if(text=="milk")
-            {
-                id=8;
-            }
-            else if(text=="cheese")
-            {
-                id=12;
-            }
-            else if(text=="apples")
-            {
-                id=110;
-            }
-            else if(text=="potato")
-            {
-               id=112;
-            }
-            else if(text=="wine")
-            {
-                id=14;
-            }
-            else if(text=="cigarettes")
-            {
-                id=17;
-            }
-            else if(text=="ticket")
-            {
-                id=18;
-            }
-            else if(text=="taxi")
-            {
-                id=107;
-            }
-            else if(text=="gasoline")
-            {
-                id=24;
-            }
-            else if(text=="mobile")
-            {
-                id=32;
-            }
-            else if(text=="internet")
-            {
-                id=33;
-            }
-            else if(text=="fitness")
-            {
-                //id
-            }
-            else if(text=="cinema")
-            {
-                id=44;
-            }
-            else if(text=="jeans")
-            {
-                //id=
-            }
-            else if(text=="shoes")
-            {
-
-            }
-
-            //send request
-            sendText(sender,"Do you want to see something else?");
-            frame="checkAgain";
-            break;
-        case "checkAgain":
-            if(text.toLowerCase()=="yes")
-            {
+            case "askAdministration":
+                if (text.toLowerCase() == "yes") {
+                    sendText(sender, "An admission officer will contact you as soon as possible.");
+                    sendText(sender, "Thank you messaging us. Goodbye");
+                    prevFrame = frame;
+                    frame = "";
+                }
+                else {
+                    sendText(sender, "The bot can't answer these questions. An admission officer will answer as soon as possible.");
+                    prevFrame = frame;
+                    frame = "";
+                }
+                break;
+            case "city":
+                city = text.toLowerCase();
                 sendText(sender, "What comparison category do you want to see?");
                 sendGenericMessagePriceType(sender);
-                prevFrame=frame;
-                frame="choice1";
-            }
-            else if(text.toLowerCase()=="no")
-            {
-                sendText(sender,"Do you have a question to the administration?");
-                prevFrame=frame;
-                frame="askAdministration";
-            }
-            else
-            {
-                sendText(sender, "Cannot recognize answer. Please write yes or no.");
-            }
-            break;
+                prevFrame = frame;
+                frame = "choice1";
+                break;
+            case "answer":
+                if (text == "chat") {
+                    sendText(sender, "Where are you from?");
+                    prevFrame = frame;
+                    frame = "city";
+                }
+                else if (text.toLowerCase() != "help" && text.toLowerCase() != "back") {
+                    sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
+                    prevFrame = frame;
+                    frame = "";
+                }
+                break;
+            case "choice1":
+                if (text == "restaurants") {
+                    sendGenericMessageRestaurants(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "markets") {
+                    sendGenericMessageMarkets(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "transportation") {
+                    sendGenericMessageTransportation(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "utilities") {
+                    sendGenericMessageUtilities(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "sports") {
+                    sendGenericMessageSports(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "clothing") {
+                    sendGenericMessageClothing(sender);
+                    prevFrame = frame;
+                    frame = "choice2";
+                }
+                else if (text == "quit") {
+                    sendText(sender, "Thank you messaging us. Goodbye.");
+                    prevFrame = frame;
+                    frame = "";
+                }
+                else {
+                    sendText(sender, "Cannot recognise answer. Select one of the options or write quit to end the conversation.");
+                    sendGenericMessagePriceType(sender);
+                }
+                break;
+            case "choice2":
+                let id = "";
+                if (text == "meal") {
+                    id = 1;
+                }
+                else if (text == "McMeal") {
+                    id = 3
+                }
+                else if (text == "beer") {
+                    id = 4;
+                }
+                else if (text == "cappuccino") {
+                    id = 114;
+                }
+                else if (text == "coke") {
+                    id = 6;
+                }
+                else if (text == "water") {
+                    id = 7;
+                }
+                else if (text == "milk") {
+                    id = 8;
+                }
+                else if (text == "cheese") {
+                    id = 12;
+                }
+                else if (text == "apples") {
+                    id = 110;
+                }
+                else if (text == "potato") {
+                    id = 112;
+                }
+                else if (text == "wine") {
+                    id = 14;
+                }
+                else if (text == "cigarettes") {
+                    id = 17;
+                }
+                else if (text == "ticket") {
+                    id = 18;
+                }
+                else if (text == "taxi") {
+                    id = 107;
+                }
+                else if (text == "gasoline") {
+                    id = 24;
+                }
+                else if (text == "mobile") {
+                    id = 32;
+                }
+                else if (text == "internet") {
+                    id = 33;
+                }
+                else if (text == "fitness") {
+                    //id
+                }
+                else if (text == "cinema") {
+                    id = 44;
+                }
+                else if (text == "jeans") {
+                    //id=
+                }
+                else if (text == "shoes") {
+
+                }
+
+                //send request
+                sendText(sender, "Do you want to see something else?");
+                frame = "checkAgain";
+                break;
+            case "checkAgain":
+                if (text.toLowerCase() == "yes") {
+                    sendText(sender, "What comparison category do you want to see?");
+                    sendGenericMessagePriceType(sender);
+                    prevFrame = frame;
+                    frame = "choice1";
+                }
+                else if (text.toLowerCase() == "no") {
+                    sendText(sender, "Do you have a question to the administration?");
+                    prevFrame = frame;
+                    frame = "askAdministration";
+                }
+                else {
+                    sendText(sender, "Cannot recognize answer. Please write yes or no.");
+                }
+                break;
+        }
     }
 }
 
