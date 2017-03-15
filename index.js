@@ -80,15 +80,15 @@ function decision(sender,text,city){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
     if(text=="back")
     {
-        console.log("Frame: "+frame);
         switch (frame){
             case "greeting":
                 sendText(sender,"Can't go back.");
                 break;
             case "answer":
-                console.log("Changing frame.");
                 frame="";
-                text="hi";
+                break;
+            case "askAdministration":
+                frame="";
                 break;
             case "city":
                 frame="greeting";
@@ -102,8 +102,6 @@ function decision(sender,text,city){
                 frame="city";
                 break;
         }
-        console.log("Frame is changed: "+frame);
-        console.log("Text: "+text);
     }
     if(text=="quit")
     {
@@ -112,16 +110,14 @@ function decision(sender,text,city){
     }
     if(text.toLowerCase()=="help")
     {
-        sendText(sender,"To go back - type 'back'" +
+        sendText(sender,"To go back - type 'back'/n" +
             "To end conversation - type 'quit'");
     }
     else {
         switch (frame) {
             case "":
-                if (text == "hi") {
                     sendText(sender, greeting);
                     frame = "greeting";
-                }
                 break;
 
             case "greeting":
