@@ -47,6 +47,7 @@ app.post('/webhook/', function(req, res) {
         let event = messaging_events[i];
         let sender = event.sender.id;
         let payload="";
+        let city="";
        /* console.log("Event: "+event);
         console.log("Event: "+JSON.stringify(event));
         console.log("Event: "+JSON.stringify(event.postback));
@@ -61,11 +62,11 @@ app.post('/webhook/', function(req, res) {
         console.log("text: "+event.message.text);*/
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
-            decision(sender,text);
+            decision(sender,text,city);
         }
         if (event.postback){
             let payload = event.postback.payload;
-            decision(sender,payload);
+            decision(sender,payload,city);
             //sendText(sender,"The payload is: "+payload);
             console.log("payload: "+payload);
         }
@@ -75,7 +76,7 @@ app.post('/webhook/', function(req, res) {
     res.sendStatus(200)
 });
 
-function decision(sender,text){
+function decision(sender,text,city){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
     if(text=="back")
     {
@@ -94,10 +95,11 @@ function decision(sender,text){
                 text="yes";
                 break;
             case "choice1":
-                frame="city";
+                frame="answer";
+                text="chat";
                 break;
             case "choice2":
-                frame="choice1";
+                frame="city";
                 break;
         }
         console.log("Frame is changed: "+frame);
@@ -155,6 +157,7 @@ function decision(sender,text){
             }
             break;
         case "city":
+            city=text.toLowerCase();
             sendText(sender, "What comparison category do you want to see?");
             sendGenericMessagePriceType(sender);
             prevFrame=frame;
@@ -714,11 +717,6 @@ function callSendAPI(messageData) {
         }
     });
 }
-
-function goback(sender, frame, text){
-
-}
-
 
 
 app.listen(app.get('port'),function(res,req) {
