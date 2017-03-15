@@ -80,7 +80,26 @@ function decision(sender,text){
     if(text=="back")
     {
         console.log("Frame: "+frame);
-        goback(sender,frame,text);
+        switch (frame){
+            case "greeting":
+                sendText(sender,"Can't go back.");
+                break;
+            case "answer":
+                console.log("Changing frame.");
+                frame="";
+                text="hi";
+                break;
+            case "city":
+                frame="greeting";
+                text="yes";
+                break;
+            case "choice1":
+                frame="city";
+                break;
+            case "choice2":
+                frame="choice1";
+                break;
+        }
         console.log("Frame is changed: "+frame);
         console.log("Text: "+text);
     }
@@ -697,26 +716,7 @@ function callSendAPI(messageData) {
 }
 
 function goback(sender, frame, text){
-    switch (frame){
-        case "greeting":
-            sendText(sender,"Can't go back.");
-            break;
-        case "answer":
-            console.log("Changing frame.");
-            frame="";
-            text="hi";
-            break;
-        case "city":
-            frame="greeting";
-            text="yes";
-            break;
-        case "choice1":
-            frame="city";
-            break;
-        case "choice2":
-            frame="choice1";
-            break;
-    }
+
 }
 
 
