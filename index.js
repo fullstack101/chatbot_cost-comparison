@@ -85,7 +85,7 @@ function decision(sender,text){
     {
         frame="";
     }
-    if(text.toLowerCase()==help)
+    if(text.toLowerCase()=="help")
     {
         sendText(sender,"To go back - type 'back'");
         sendText(sender,"To end conversation - type 'quit'");
