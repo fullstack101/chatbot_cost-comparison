@@ -702,6 +702,7 @@ function goback(sender, frame, text){
             sendText(sender,"Can't go back.");
             break;
         case "answer":
+            console.log("Changing frame.");
             frame="";
             text="hi";
             break;
