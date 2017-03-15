@@ -124,10 +124,9 @@ function decision(sender,text,city){
                 if (text.toLowerCase() == "yes") {
                     sendText(sender, "How would you prefer to check the prices?");
                     sendGenericMessage(sender);
-                    prevFrame = frame;
                     frame = "answer";
                 }
-                else if (text.toLowerCase() != "help") {
+                else if (text.toLowerCase() != "help" && text.toLowerCase()!="back") {
                     sendText(sender, "Do you have a question to the administration?");
                     prevFrame = frame;
                     frame = "askAdministration";
@@ -138,12 +137,10 @@ function decision(sender,text,city){
                 if (text.toLowerCase() == "yes") {
                     sendText(sender, "An admission officer will contact you as soon as possible.");
                     sendText(sender, "Thank you messaging us. Goodbye");
-                    prevFrame = frame;
                     frame = "";
                 }
                 else {
-                    sendText(sender, "The bot can't answer these questions. An admission officer will answer as soon as possible.");
-                    prevFrame = frame;
+                    sendText(sender, "Thank you for messaging us. Goodbye.");
                     frame = "";
                 }
                 break;
@@ -151,55 +148,45 @@ function decision(sender,text,city){
                 city = text.toLowerCase();
                 sendText(sender, "What comparison category do you want to see?");
                 sendGenericMessagePriceType(sender);
-                prevFrame = frame;
                 frame = "choice1";
                 break;
             case "answer":
                 if (text == "chat") {
                     sendText(sender, "Where are you from?");
-                    prevFrame = frame;
                     frame = "city";
                 }
                 else if (text.toLowerCase() != "help" && text.toLowerCase() != "back") {
                     sendText(sender, "Opening website. Thank you messaging us. Goodbye.");
-                    prevFrame = frame;
                     frame = "";
                 }
                 break;
             case "choice1":
                 if (text == "restaurants") {
                     sendGenericMessageRestaurants(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "markets") {
                     sendGenericMessageMarkets(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "transportation") {
                     sendGenericMessageTransportation(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "utilities") {
                     sendGenericMessageUtilities(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "sports") {
                     sendGenericMessageSports(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "clothing") {
                     sendGenericMessageClothing(sender);
-                    prevFrame = frame;
                     frame = "choice2";
                 }
                 else if (text == "quit") {
                     sendText(sender, "Thank you messaging us. Goodbye.");
-                    prevFrame = frame;
                     frame = "";
                 }
                 else {
