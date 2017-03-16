@@ -118,7 +118,6 @@ function decision(sender,text){
         switch (frame) {
             case "":
                     sendText(sender, greeting);
-                    sendText(sender,"zdr\u000Akp");
                     frame = "greeting";
                 break;
 
@@ -269,10 +268,21 @@ function decision(sender,text){
                     //.then((res) => res.json())
                     .then(function(json) {
                         console.log(json);
-                        // use json
-                        sendText(sender,json[0].average_price);
-                        sendText(sender,json[1].average_price);
-                        sendText(sender, "Do you want to see something else?");
+                        let cost="";
+                        let price;
+                        if(json[0].average_price>json[1].average_price){
+                            cost="cheaper";
+                            price=json[0].average_price-json[1].average_price;
+                        }
+                        else if(json[0].average_price<json[1].average_price){
+                            cost="more expensive";
+                            price=json[1].average_price-json[0].average_price;
+                        }
+                        else{
+                            cost="same price";
+                            price=0;
+                        }
+                        sendText(sender,"The average price in "+city+" is "+json[0].average_price+"\u000AThe average price is Blagoevgrad is "+ json[1].average_price+"\u000AIn Blagoevgrad is "+cost+" with "+price+"\u000ADo you want to see something else?");
                         frame = "checkAgain";
                     });
                 break;
