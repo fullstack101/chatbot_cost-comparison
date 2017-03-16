@@ -147,6 +147,7 @@ function decision(sender,text,city){
                 break;
             case "city":
                 city = text.toLowerCase();
+                console.log("City assigned: "+city);
                 sendText(sender, "What comparison category do you want to see?");
                 sendGenericMessagePriceType(sender);
                 frame = "choice1";
