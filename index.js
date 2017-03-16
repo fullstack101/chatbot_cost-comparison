@@ -264,8 +264,9 @@ function decision(sender,text){
                 }
                 console.log("City: "+city);
                 fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
+                    .then((res) => res.json())
                     .then(function(json) {
-                        console.log(json.json());
+                        console.log(json);
                         // use json
                         sendText(sender,json.stringify());
                     });
