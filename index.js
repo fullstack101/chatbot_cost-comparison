@@ -163,6 +163,7 @@ function decision(sender,text,city){
                 }
                 break;
             case "choice1":
+                console.log("City choice 1: "+city);
                 if (text == "restaurants") {
                     sendGenericMessageRestaurants(sender);
                     frame = "choice2";
