@@ -265,9 +265,9 @@ function decision(sender,text){
                 console.log("City: "+city);
                 fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
                     .then(function(json) {
-                        console.log(json);
+                        console.log(json.json());
                         // use json
-                        sendText(sender,"Success");
+                        sendText(sender,json.stringify());
                     });
                 sendText(sender, "Do you want to see something else?");
                 frame = "checkAgain";
