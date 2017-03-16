@@ -263,15 +263,17 @@ function decision(sender,text){
 
                 }
                 console.log("City: "+city);
-                fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
-                    .then((res) => res.json())
+                Promise.all([fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id).then((res) => res.json()),
+                    fetch("http://cost-comparison.azurewebsites.net/getItem/Blagoevgrad/"+id).then((res) => res.json())])
+                    //.then((res) => res.json())
                     .then(function(json) {
                         console.log(json);
                         // use json
-                        sendText(sender,json.average_price);
+                        sendText(sender,json[0].average_price);
+                        sendText(sender,json[1].average_price);
+                        sendText(sender, "Do you want to see something else?");
+                        frame = "checkAgain";
                     });
-                sendText(sender, "Do you want to see something else?");
-                frame = "checkAgain";
                 break;
             case "checkAgain":
                 if (text.toLowerCase() == "yes") {
