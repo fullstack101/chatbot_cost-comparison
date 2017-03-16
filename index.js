@@ -79,6 +79,7 @@ app.post('/webhook/', function(req, res) {
 
 function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
+    greeting="Hi, this is cost-comparison bot. It can compare the basic cost needs for students. The bot compares can compare your city with Blagoevgrad, Bulgaria.\u000AIf you need help to navigate type 'help'\u000AIf you want to take a step back type 'back'\u000AIf you want to end the conversation type 'quit'\u000ASo let's go. Do you want to see the price comparisson between your city and Blagoevgrad?";
     if(text=="back")
     {
         switch (frame){
@@ -283,7 +284,7 @@ function decision(sender,text){
                             price=0;
                         }
                         price=price*100;
-                        sendText(sender,"The average price in "+city+" is "+json[0].average_price.toFixed(2)+"\u000AThe average price is Blagoevgrad is "+ json[1].average_price.toFixed(2)+"\u000AIn Blagoevgrad is "+cost+" with "+price.toFixed(2)+"%\u000ADo you want to see something else?");
+                        sendText(sender,"The average price in "+city+" is $"+json[0].average_price.toFixed(2)+"\u000AThe average price is Blagoevgrad is $"+ json[1].average_price.toFixed(2)+"\u000AIn Blagoevgrad is "+cost+" with "+price.toFixed(2)+"%\u000ADo you want to see something else?");
                         frame = "checkAgain";
                     });
                 break;
@@ -341,7 +342,7 @@ function sendGenericMessagePriceType(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Restaurants",
@@ -397,7 +398,7 @@ function sendGenericMessage(recipientId) {
                         title: "Cost-comparison",
                         subtitle: "Check the prices in Blagoevgrad",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "web_url",
                             url: "http://nodeci.azurewebsites.net/",
@@ -430,7 +431,7 @@ function sendGenericMessageRestaurants(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Meal Restaurant",
@@ -486,7 +487,7 @@ function sendGenericMessageMarkets(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Milk(1 liter)",
@@ -542,7 +543,7 @@ function sendGenericMessageTransportation(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Ticket (Local Transport)",
@@ -579,7 +580,7 @@ function sendGenericMessageUtilities(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "1 min. Mobile Tariff",
@@ -612,7 +613,7 @@ function sendGenericMessageSports(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Fitness Club",
@@ -645,7 +646,7 @@ function sendGenericMessageClothing(recipientId){
                         title: "Categories",
                         subtitle: "Choose a category",
                         item_url: "http://nodeci.azurewebsites.net/",
-                        image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                        image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "postback",
                             title: "Pair of Jeans",
