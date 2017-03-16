@@ -260,7 +260,7 @@ function decision(sender,text,city){
                 else if (text == "shoes") {
 
                 }
-
+                console.log("City: "+city);
                 fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
                     .then(function(json) {
                         console.log(json);
