@@ -36,6 +36,7 @@ app.get('/webhook', function(req, res) {
 });
 
 let frame = "";
+let city="";
 let prevFrame="";
 let botID=638196106390731;
 
@@ -48,7 +49,6 @@ app.post('/webhook/', function(req, res) {
         let event = messaging_events[i];
         let sender = event.sender.id;
         let payload="";
-        let city="";
        /* console.log("Event: "+event);
         console.log("Event: "+JSON.stringify(event));
         console.log("Event: "+JSON.stringify(event.postback));
