@@ -282,7 +282,8 @@ function decision(sender,text){
                             cost="same price";
                             price=0;
                         }
-                        sendText(sender,"The average price in "+city+" is "+json[0].average_price+"\u000AThe average price is Blagoevgrad is "+ json[1].average_price+"\u000AIn Blagoevgrad is "+cost+" with "+price.toFixed(2)+"%\u000ADo you want to see something else?");
+                        price=price*100;
+                        sendText(sender,"The average price in "+city+" is "+json[0].average_price.toFixed(2)+"\u000AThe average price is Blagoevgrad is "+ json[1].average_price.toFixed(2)+"\u000AIn Blagoevgrad is "+cost+" with "+price.toFixed(2)+"%\u000ADo you want to see something else?");
                         frame = "checkAgain";
                     });
                 break;
