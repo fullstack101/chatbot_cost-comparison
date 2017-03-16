@@ -79,7 +79,7 @@ app.post('/webhook/', function(req, res) {
 
 function decision(sender,text){
     let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
-    greeting="Hi, this is cost-comparison bot. It can compare the basic cost needs for students. The bot compares can compare your city with Blagoevgrad, Bulgaria.\u000AIf you need help to navigate type 'help'\u000AIf you want to take a step back type 'back'\u000AIf you want to end the conversation type 'quit'\u000ASo let's go. Do you want to see the price comparisson between your city and Blagoevgrad?";
+    greeting="Hi, this is cost-comparison bot. It can compare the basic cost needs for students. The bot can compare your city with Blagoevgrad, Bulgaria.\u000A\u000AIf you need help to navigate type 'help'\u000AIf you want to take a step back type 'back'\u000AIf you want to end the conversation type 'quit'\u000A\u000ASo let's go. Do you want to see the price comparisson between your city and Blagoevgrad?";
     if(text=="back")
     {
         switch (frame){
@@ -361,7 +361,7 @@ function sendGenericMessagePriceType(recipientId){
                             title: "Categories",
                             subtitle: "Choose a category",
                             item_url: "http://nodeci.azurewebsites.net/",
-                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                             buttons: [{
                             type: "postback",
                             title: "Utilities(Monthly)",
@@ -401,7 +401,7 @@ function sendGenericMessage(recipientId) {
                         image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                         buttons: [{
                             type: "web_url",
-                            url: "http://nodeci.azurewebsites.net/",
+                            url: "http://cost-comparison.azurewebsites.net/home",
                             title: "Check Prices online"
                         }, {
                             type: "postback",
@@ -450,7 +450,7 @@ function sendGenericMessageRestaurants(recipientId){
                             title: "Categories",
                             subtitle: "Choose a category",
                             item_url: "http://nodeci.azurewebsites.net/",
-                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                             buttons: [{
                                 type: "postback",
                                 title: "Cappuccino",
@@ -506,7 +506,7 @@ function sendGenericMessageMarkets(recipientId){
                             title: "Categories",
                             subtitle: "Choose a category",
                             item_url: "http://nodeci.azurewebsites.net/",
-                            image_url: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRP3xvk-VoiD710STywOytypn0Miyz3oa2XxkgV1frhmLQC2pPhnA",
+                            image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/American_University_in_Bulgaria.jpg/1200px-American_University_in_Bulgaria.jpg",
                             buttons: [{
                                 type: "postback",
                                 title: "Potato (1kg)",
