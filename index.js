@@ -102,7 +102,7 @@ function decision(sender,text){
             case "":
                 if(text.toLowerCase()!="quit"){
                     sendText(sender, greeting);
-                    frame = "greeting";  
+                    frame = "greeting";
                 }
                 break;
 
@@ -132,7 +132,6 @@ function decision(sender,text){
                 break;
             case "city":
                 city = text.toLowerCase();
-                console.log("City assigned: "+city);
                 sendText(sender, "What comparison category do you want to see?");
                 sendGenericMessagePriceType(sender);
                 frame = "choice1";
@@ -148,7 +147,6 @@ function decision(sender,text){
                 }
                 break;
             case "choice1":
-                console.log("City choice 1: "+city);
                 if (text == "restaurants") {
                     sendGenericMessageRestaurants(sender);
                     frame = "choice2";
@@ -245,12 +243,10 @@ function decision(sender,text){
                     id=60;
                 }
                 else if (text == "shoes") {
-
+                    id=64;
                 }
-                console.log("City: "+city);
                 Promise.all([fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id).then((res) => res.json()),
                     fetch("http://cost-comparison.azurewebsites.net/getItem/Blagoevgrad/"+id).then((res) => res.json())])
-                    //.then((res) => res.json())
                     .then(function(json) {
                         console.log(json);
                         let cost="";
