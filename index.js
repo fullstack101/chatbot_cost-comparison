@@ -260,7 +260,12 @@ function decision(sender,text,city){
 
                 }
 
-                //send request
+                httpJSONRequest("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
+                    .then(function(json) {
+                        console.log(json);
+                        // use json
+                        sendText(sender,json.stringify());
+                    });
                 sendText(sender, "Do you want to see something else?");
                 frame = "checkAgain";
                 break;
@@ -663,6 +668,29 @@ function callSendAPI(messageData) {
     });
 }
 
+
+const httpJSONRequest = function (url) {
+    return new Promise(function (resolve, reject) {
+        console.log(url);
+        let xhr = new XMLHttpRequest();
+
+        xhr.withCredentials = false;
+        xhr.open('GET', url, true);
+        xhr.send();
+        xhr.addEventListener("readystatechange", processRequest, false);
+
+        function processRequest(e) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                let response = JSON.parse(xhr.responseText);
+                resolve(response);
+            } else if (xhr.readyState == 4) {
+                console.log(xhr.readyState);
+                console.log(xhr.status);
+                reject(Error("Something went wrong with the request \n\t\t\t\t\t XHR Status: " + xhr.status));
+            }
+        }
+    });
+};
 
 app.listen(app.get('port'),function(res,req) {
     console.log("running: port");
