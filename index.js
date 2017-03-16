@@ -42,25 +42,10 @@ let botID=638196106390731;
 
 app.post('/webhook/', function(req, res) {
     let messaging_events = req.body.entry[0].messaging;
-    //let frame="";
-    //console.log("DOGE");
-    //console.log("Length: "+messaging_events.length);
     for (let i = 0; i < messaging_events.length; i++) {
         let event = messaging_events[i];
         let sender = event.sender.id;
         let payload="";
-       /* console.log("Event: "+event);
-        console.log("Event: "+JSON.stringify(event));
-        console.log("Event: "+JSON.stringify(event.postback));
-        if(event.postback)
-        {
-            console.log("Event: "+event.postback.payload);
-        }
-
-        console.log("Sender: "+sender);
-        //sendText(sender, "Frame: "+frame);
-        console.log("message: "+ event.message);
-        console.log("text: "+event.message.text);*/
         if (event.message && event.message.text && sender!=botID) {
             let text = event.message.text;
             decision(sender,text);
@@ -68,8 +53,6 @@ app.post('/webhook/', function(req, res) {
         if (event.postback){
             let payload = event.postback.payload;
             decision(sender,payload);
-            //sendText(sender,"The payload is: "+payload);
-            console.log("payload: "+payload);
         }
 
 
@@ -78,8 +61,7 @@ app.post('/webhook/', function(req, res) {
 });
 
 function decision(sender,text){
-    let greeting = "Hi, do you want to see a cost comparison between your city and Blagoevgrad, Bulgaria?";
-    greeting="Hi, this is cost-comparison bot. It can compare the basic cost needs for students. The bot can compare your city with Blagoevgrad, Bulgaria.\u000A\u000AIf you need help to navigate type 'help'\u000AIf you want to take a step back type 'back'\u000AIf you want to end the conversation type 'quit'\u000A\u000ASo let's go. Do you want to see the price comparisson between your city and Blagoevgrad?";
+    let greeting = "Hi, this is cost-comparison bot. The bot can compare the basic cost needs for students in your city and in Blagoevgrad, Bulgaria.\u000A\u000AIf you need help to navigate type 'help'\u000AIf you want to take a step back type 'back'\u000AIf you want to end the conversation type 'quit'\u000A\u000ASo let's go. Do you want to see the price comparisson between your city and Blagoevgrad?";
     if(text=="back")
     {
         switch (frame){
@@ -118,8 +100,10 @@ function decision(sender,text){
     else {
         switch (frame) {
             case "":
+                if(text.toLowerCase()!="quit"){
                     sendText(sender, greeting);
-                    frame = "greeting";
+                    frame = "greeting";  
+                }
                 break;
 
             case "greeting":
