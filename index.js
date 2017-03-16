@@ -268,7 +268,7 @@ function decision(sender,text){
                     .then(function(json) {
                         console.log(json);
                         // use json
-                        sendText(sender,json.stringify());
+                        sendText(sender,json.average_price);
                     });
                 sendText(sender, "Do you want to see something else?");
                 frame = "checkAgain";
