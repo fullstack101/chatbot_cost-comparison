@@ -6,6 +6,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -248,19 +249,19 @@ function decision(sender,text,city){
                     id = 33;
                 }
                 else if (text == "fitness") {
-                    //id
+                    id=40;
                 }
                 else if (text == "cinema") {
                     id = 44;
                 }
                 else if (text == "jeans") {
-                    //id=
+                    id=60;
                 }
                 else if (text == "shoes") {
 
                 }
 
-                httpJSONRequest("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
+                fetch("http://cost-comparison.azurewebsites.net/getItem/"+city+"/"+id)
                     .then(function(json) {
                         console.log(json);
                         // use json

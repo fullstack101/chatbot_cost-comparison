@@ -6,6 +6,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "node-fetch": "^1.6.3",
     "npm": "^4.3.0",
     "request": "^2.80.0"
   },
