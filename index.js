@@ -118,6 +118,7 @@ function decision(sender,text){
         switch (frame) {
             case "":
                     sendText(sender, greeting);
+                    sendText(sender,"zdr\u000Akp");
                     frame = "greeting";
                 break;
 
